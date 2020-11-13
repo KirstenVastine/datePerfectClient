@@ -40,6 +40,40 @@
   font-size: 60px;
 }
 
+ /* update profile section */
+.hobbiesTitle {
+  padding-left: 0 !important;
+}
+/* viewprofile section */
+.imageDiv {
+  
+  flex-direction: column;
+  width: auto;
+  margin-top: 5px;
+  margin-bottom: auto;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding: 40px 80px;
+  background-color: black;
+}
+
+/* .topborder {
+  box-shadow: 2px 2px 2px black;
+  border: 15px solid blue;
+} */
+
+.imageInnerDiv {
+  display: flex;
+  width: auto;
+  margin: auto;
+  padding: 10px 10px;
+  background-color: rgb(229, 233, 229);
+  position: relative;
+  top: 50px;
+  
+
+}
+
 
 
 
@@ -82,3 +116,5 @@
     transform: rotate(360deg);
   }
 } */
+
+

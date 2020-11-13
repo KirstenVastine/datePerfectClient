@@ -33,12 +33,20 @@
   font-family: 'Raleway', sans-serif;
   font-weight:300;
 }
+#navTitle{
+  margin:0;
+  font-family: 'Raleway', sans-serif;
+  font-weight:300;
+  color: white;
+  font-size: 20px;
+}
 .mainButton{
   border-radius: 16px;
 }
 .heart{
   font-size: 60px;
 }
+
 
  /* update profile section */
 .hobbiesTitle {
@@ -85,28 +93,22 @@
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+
+.signin{
+  transform: translateY(-30%);
+
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.signInText{
+  display:flex;
+  justify-content: flex-end;
+  align-items: flex-end;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.smallHeart{
+  font-size: 20px;
 }
 
-.App-link {
-  color: #61dafb;
-}
 
 @keyframes App-logo-spin {
   from {
@@ -117,4 +119,10 @@
   }
 } */
 
+
+
+.logouticon{
+  
+  margin-left: auto;
+}
 

@@ -1,6 +1,7 @@
 import React from "react";
 import Chip from '@material-ui/core/Chip';
-function VerifiedUserView (){
+
+function VerifiedUserView (props){
     const handleClick = () => {
         console.info('You clicked the Chip.');
       };
@@ -9,7 +10,7 @@ function VerifiedUserView (){
         <div className= "titleDiv">
         <i class="far fa-heart heart"></i>
         <br></br>
-        <h1 className="title">Hello Mark!</h1>
+        <h1 className="title">{`Hello ${props.username}!`}</h1>
         </div>
         <div className= "buttonDiv">
     <Chip size="large"  color="secondary" label="View My Profile" onClick={handleClick} />

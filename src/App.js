@@ -77,6 +77,7 @@ function App() {
         <Route exact path="/login">
          <Login setUsername={setUsername} username={username}
          password={password}
+         sessionToken={sessionToken}
          setPassword={setPassword}
          updateToken={updateToken}/>
          </Route>

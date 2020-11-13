@@ -63,7 +63,7 @@ function Login (props){
 
       const checkForToken= () =>{
         if(props.sessionToken){
-          return <Redirect to= "/user"/>
+          return ( <Redirect to= "/user"/>)
         }return(console.log('no luck'))
       }
 

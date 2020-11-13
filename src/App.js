@@ -5,10 +5,21 @@ import Sitebar from '../src/Components/Sitebar/Sitebar';
 import '../src/App.css';
 import VerifiedUserView from './Components/VerifiedUserView/VerifiedUserView';
 import Auth from './Components/Auth/Auth';
+
+import Footer from './Components/Footer/Footer'
+import DeleteAccount from './Components/Sitebar/DeleteAccount';
+import ViewProfile from './Components/Profile/MyProfile/ViewProfile'
+import UpdateProfileModel from './Components/Profile/MyProfile/UpdateProfileModal';
+
+
+
+const button = 'two';
+
 import Login from './Components/Auth/Login';
 import Signup from './Components/Auth/Signup';
 
 const button = 'four'
+
 
 
 function App() {
@@ -43,9 +54,15 @@ function App() {
   
   return (
     <ThemeProvider theme={theme}>
+
+    {button === 'one' ? <Auth /> :  <UpdateProfileModal />}
+   
+    
+
     <Sitebar sessionToken= {sessionToken}  clickLogout= {clearToken}/>
     {protectedViews()}
   
+
     </ThemeProvider>
   );
 }

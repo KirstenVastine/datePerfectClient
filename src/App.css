@@ -1,3 +1,5 @@
+/* Main Component */
+
 .mainDiv{
   margin-left: auto;
   margin-right:auto;
@@ -44,7 +46,7 @@
   border-radius: 16px;
 }
 .heart{
-  font-size: 60px;
+  font-size: 40px;
 }
 
 .signin{
@@ -64,4 +66,56 @@
 .logouticon{
   
   margin-left: auto;
+}
+
+/* Match Results */
+
+.matchTitle{
+  margin-bottom: 4%;
+  font-size: 12px;
+}
+
+.matchDiv{
+
+  margin-left: auto;
+  margin-right:auto;
+  display:flex;
+  justify-content: flex-end;
+  flex-direction: column;
+  margin-top: 4%;
+ 
+
+
+
+}
+
+@media only screen and (min-width: 600px) {
+.matchDiv{
+  width: 50vw;
+  margin-top: 4%;
+  
+}
+
+.matchTitle{
+  font-size: 14px;
+  
+}
+
+}
+@media only screen and (min-width: 768px) {
+
+
+  .matchTitle{
+    font-size: 16px;
+    
+  }
+
+
+}
+
+
+
+#paper{
+  padding:0;
+  margin-bottom: 50px;
 }

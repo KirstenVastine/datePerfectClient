@@ -40,8 +40,10 @@ export default function Sitebar(props) {
 
 const checkForToken= () =>{
   if(!props.sessionToken){
-    return <Redirect to= "/"/>
-  }return(console.log('no luck'))
+    return <Redirect to="/"/>
+  }else{
+    return <Redirect to="/user"/>
+  }
 }
 
 
@@ -52,8 +54,8 @@ const checkForToken= () =>{
         <AppBar position="fixed" color="primary">
           <Toolbar>
             <Typography variant="h5">
-              <Link to="/" id="navTitle">
-                {" "}
+              <Link to={!props.sessionToken ? "/" : "/user"} id="navTitle">
+                
                 Date Perfect <i class="far fa-heart smallHeart"></i>
               </Link>
             </Typography>

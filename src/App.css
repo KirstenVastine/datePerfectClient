@@ -41,7 +41,11 @@
   font-weight:300;
   color: white;
   font-size: 20px;
+  text-decoration: none;
 }
+
+
+
 .mainButton{
   border-radius: 16px;
 }
@@ -84,6 +88,7 @@
   flex-direction: column;
   margin-top: 4%;
  
+ 
 
 
 
@@ -118,4 +123,60 @@
 #paper{
   padding:0;
   margin-bottom: 50px;
+}
+
+/* Datemodal */
+
+.cardText{
+  display: flex;
+  justify-content: center;
+
+}
+
+.heartModal{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 10px;
+  margin-right:10px;
+}
+
+.modalTitle{
+  background-color: #561AB9;
+  color: white;
+  text-align: center;
+}
+
+.connect{
+  background-color:#100B00;
+  display: flex;
+  
+
+}
+
+#connect{
+  color:white;
+  margin-right: auto;
+  margin-left:auto;
+  letter-spacing: 5px;
+  font-size: 1.25rem;
+}
+
+.fa-envelope{
+  margin-right: 8px;
+}
+
+.fa-user-check{
+ color: #561AB9;
+
+}
+
+/* Match Table */
+
+#matchBar{
+  background-color: #220A4A;
+}
+
+.chip:hover{
+  cursor: pointer;
 }

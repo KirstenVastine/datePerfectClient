@@ -4,13 +4,15 @@ import theme from "../src/Theme";
 import Sitebar from "../src/Components/Sitebar/Sitebar";
 import "../src/App.css";
 import VerifiedUserView from "./Components/VerifiedUserView/VerifiedUserView";
-import Auth from "./Components/Auth/Auth";
 import Login from "./Components/Auth/Login";
 import Signup from "./Components/Auth/Signup";
 import MatchTable from "./Components/Matches/MatchTable"
 import { BrowserRouter } from "react-router-dom";
 import { Route, Link } from "react-router-dom";
 import Logo from "./Components/Auth/Logo";
+import DatePlan from "./Components/Matches/DatePlan/DatePlan"
+import DatePlanActivity from "./Components/Matches/DatePlan/Activity_DatePlan";
+
 
 const button = "four";
 
@@ -90,10 +92,25 @@ function App() {
          updateToken={updateToken}/>
          </Route>
 
-       
+         <Route exact path="/date">
+         <DatePlan setUsername={setUsername} username={username}
+         password={password}
+         sessionToken={sessionToken}
+         setPassword={setPassword}
+         updateToken={updateToken}/>
+         </Route>
+
+           
+         <Route exact path="/date/activity">
+         <DatePlanActivity updateToken={updateToken}
+         setUsername={setUsername}
+         username={username}
+         password={password}
+         setPassword={setPassword}/>
+         </Route>
        
         <Route exact path="/user">
-        <VerifiedUserView  username={username}/>
+        <VerifiedUserView  username={username} sessionToken={sessionToken}/>
         </Route>
         
         <Route exact path="/user/match">

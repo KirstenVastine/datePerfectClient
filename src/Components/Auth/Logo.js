@@ -21,6 +21,7 @@ function Logo(props) {
             component= {Link}
             color="secondary"
             label="Sign Up"
+            className="chip"
             
           />
        
@@ -32,6 +33,7 @@ function Logo(props) {
             label="Login"
             to ="/login"
             component= {Link}
+            className="chip"
             
           />
     

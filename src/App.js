@@ -12,7 +12,8 @@ import { Route, Link } from "react-router-dom";
 import Logo from "./Components/Auth/Logo";
 import DatePlan from "./Components/Matches/DatePlan/DatePlan"
 import DatePlanActivity from "./Components/Matches/DatePlan/Activity_DatePlan";
-import ViewProfile from "./Components/Profile/MyProfile/ViewProfile"
+import ViewProfile from "./Components/Profile/MyProfile/ViewProfile";
+import Upload from "./Components/Profile/UploadPhoto";
 
 
 const button = "four";
@@ -100,6 +101,15 @@ function App() {
          setPassword={setPassword}
          updateToken={updateToken}/>
          </Route>
+
+         <Route exact path="/upload">
+         <Upload setUsername={setUsername} username={username}
+         password={password}
+         sessionToken={sessionToken}
+         setPassword={setPassword}
+         updateToken={updateToken}/>
+         </Route>
+
 
          <Route exact path="/date">
          <DatePlan setUsername={setUsername} username={username}

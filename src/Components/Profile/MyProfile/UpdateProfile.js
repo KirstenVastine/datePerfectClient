@@ -7,6 +7,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Grid from '@material-ui/core/Grid';
+import Upload from '../UploadPhoto'
 
 
 export default function UpdateProfileModal(props) {
@@ -18,9 +19,11 @@ export default function UpdateProfileModal(props) {
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
         <DialogTitle id="form-dialog-title">Profile Edit</DialogTitle>
         <DialogContent>
+        
           <DialogContentText>
             Edit your profile
           </DialogContentText>
+          <Upload sessionToken={props.sessionToken}/>
           <TextField
             autoFocus
             margin="dense"

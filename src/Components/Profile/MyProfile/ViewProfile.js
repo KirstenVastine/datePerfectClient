@@ -28,7 +28,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function ViewProfile2() {
+export default function ViewProfile(props) {
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -165,7 +165,7 @@ export default function ViewProfile2() {
           </Button>
         </DialogActions>
       </Dialog>
-      <UpdateProfileModal open={open} handleClose={handleClose}/>
+      <UpdateProfileModal sessionToken={props.sessionToken} open={open} handleClose={handleClose}/>
     
     </div>
   );

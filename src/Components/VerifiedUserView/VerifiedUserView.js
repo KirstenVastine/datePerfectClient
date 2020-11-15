@@ -17,6 +17,9 @@ function VerifiedUserView(props) {
           size="large"
           color="secondary"
           label="View My Profile"
+          to= "/profile"
+          component={Link}
+          className="chip"
       
         />
         <br></br>
@@ -26,6 +29,7 @@ function VerifiedUserView(props) {
           component={Link}
           color="secondary"
           label="Find My Match"
+          className="chip"
           
         />
       </div>

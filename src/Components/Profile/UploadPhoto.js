@@ -30,7 +30,7 @@ const Upload = (props) => {
     // if(!previewSource) return;
     // uploadImage(previewSource);
 
-    const uploadImage = await fetch("http://localhost:3000/user/cloudsign", {
+    const uploadImage = await fetch("http://localhost:3000/profile/cloudsign", {
       method: "GET",
       headers: {
         Authorization: props.sessionToken,
@@ -59,13 +59,13 @@ const Upload = (props) => {
     console.log(fileUrl);
 
     const final = await (
-      await fetch("http://localhost:3000/user/imageset", {
+      await fetch("http://localhost:3000/profile/imageset", {
         method: "PUT",
         headers: {
           Authorization: props.sessionToken,
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ user: { url: results.secure_url } }),
+        body: JSON.stringify({ profile: { url: results.secure_url } }),
       })
     ).json();
   };

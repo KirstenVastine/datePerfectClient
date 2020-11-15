@@ -14,9 +14,8 @@ import Avatar from "@material-ui/core/Avatar";
 import SearchIcon from "@material-ui/icons/Search";
 import AssignmentIcon from "@material-ui/icons/Assignment";
 import InputBase from "@material-ui/core/InputBase";
-
 import DatePlan from "./DatePlan/DatePlan";
-import image from "../../Assets/female_face.jpg"
+
 
 
 

@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import { ThemeProvider } from "@material-ui/styles";
 import theme from "../src/Theme";
@@ -23,6 +24,7 @@ function App() {
   const [sessionToken, setSessionToken] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
@@ -57,7 +59,10 @@ function App() {
   };
 
   return (
+
+
     <ThemeProvider theme={theme}>
+
       {protectedViews}
       <BrowserRouter>
       <Route path="/">

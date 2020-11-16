@@ -133,7 +133,7 @@ function App() {
         </Route>
         
         <Route exact path="/user/match">
-        <MatchTable username={username}/>
+        <MatchTable username={username}  sessionToken={sessionToken}/>
         </Route>
 
       </BrowserRouter>

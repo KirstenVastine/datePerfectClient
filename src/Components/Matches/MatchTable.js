@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import {fade,  makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -141,8 +141,33 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-export default function ViewMatchProfile() {
+
+export default function ViewMatchProfile(props) {
   const classes = useStyles();
+  const [profile, setProfile] = useState([]); 
+
+
+
+const fetchProfiles = () =>{
+    fetch('http://localhost:3000/profile/all', {
+        method: 'GET',
+        headers: new Headers ({
+            'Content-Type': 'application/json',
+            'Authorization':props.sessionToken
+        })
+    }).then((res=> res.json()))
+    .then((json) => {
+        // console.log(json)
+        setProfile(json) //taking information from the server and setting it to our state
+    })
+}
+
+useEffect(() => {
+    fetchProfiles();
+}, [])
+
+console.log(profile)
+
 
   return (
   
@@ -182,16 +207,17 @@ export default function ViewMatchProfile() {
       </div>
      
           <List className={classes.list}>
-            {messages.map(({ id, primary, secondary, person }) => (
+            {profile.map(({id, name, age, url}) => (
               <React.Fragment key={id}>
-                <ListItem button>
+                <ListItem button >
                   <ListItemAvatar>
-                    <Avatar alt="Profile Picture" src={person} />
+                    <Avatar alt="Profile Picture" src={url} />
                   </ListItemAvatar>
-                  <ListItemText primary={primary} secondary={secondary} />
-                  <DatePlan />
+                  <ListItemText primary={name} secondary={age} />
+                  <DatePlan profile={profile}  />
                 </ListItem>
               </React.Fragment>
+          
             ))}
           </List>
        

@@ -119,7 +119,7 @@ function DatePlan(props) {
           ) : toggle === "gift" ? (
             <DatePlanGift />
           ) : (
-            <DatePlanHome />
+            <DatePlanHome profile={props.profile} />
           )}
         </DialogContent>
         <DialogActions>

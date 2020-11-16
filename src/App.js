@@ -8,61 +8,47 @@ import Auth from './Components/Auth/Auth';
 
 import Footer from './Components/Footer/Footer'
 import DeleteAccount from './Components/Sitebar/DeleteAccount';
-import ViewProfile from './Components/Profile/MyProfile/ViewProfile'
-import UpdateProfileModel from './Components/Profile/MyProfile/UpdateProfileModal';
-
-
-
-const button = 'two';
-
 import Login from './Components/Auth/Login';
 import Signup from './Components/Auth/Signup';
-
-const button = 'four'
-
-
 
 function App() {
   const [sessionToken, setSessionToken] = useState('');
   const [username, setUsername]= useState('');
   const [password, setPassword]= useState('');
 
-
-
   useEffect(() => {
     if(localStorage.getItem('token')){
       setSessionToken(localStorage.getItem('token'))
     }
-    }, [])
+  }, [])
 
-    const updateToken= (newToken) => {
-      localStorage.setItem('token', newToken);
-      setSessionToken(newToken);
-      console.log(sessionToken);
-    }
+  const updateToken= (newToken) => {
+    localStorage.setItem('token', newToken);
+    setSessionToken(newToken);
+    console.log(sessionToken);
+  }
 
-    const protectedViews= () => {
-      return (sessionToken === localStorage.getItem('token') ? <VerifiedUserView username= {username} />
-      :  <Auth updateToken={updateToken} setUsername={setUsername}  username= {username} password={password} setPassword={setPassword}/> )
+  const protectedViews= () => {
+    return (
+      sessionToken === localStorage.getItem('token') 
+      ? <VerifiedUserView username= {username} />
+      : <Auth updateToken={updateToken} 
+          setUsername={setUsername}  
+          username= {username} 
+          password={password} 
+          setPassword={setPassword}/> 
+    );
+  }
 
-    }
-
-    const clearToken = () => {
-      localStorage.clear();
-      setSessionToken('');
-    }
+  const clearToken = () => {
+    localStorage.clear();
+    setSessionToken('');
+  }
   
   return (
     <ThemeProvider theme={theme}>
-
-    {button === 'one' ? <Auth /> :  <UpdateProfileModal />}
-   
-    
-
-    <Sitebar sessionToken= {sessionToken}  clickLogout= {clearToken}/>
-    {protectedViews()}
-  
-
+      <Sitebar sessionToken= {sessionToken}  clickLogout= {clearToken}/>
+      {protectedViews()}
     </ThemeProvider>
   );
 }

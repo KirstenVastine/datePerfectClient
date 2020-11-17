@@ -83,7 +83,7 @@ function Signup (props){
 
     const checkForToken= () =>{
       if(props.sessionToken){
-        return <Redirect to= "/user"/>
+        return <Redirect to= "/createprofile"/>
       }return(console.log('no luck'))
     }
 

@@ -157,7 +157,7 @@ function getStepContent(step) {
   }
 }
 
-export function Checkout() {
+export default function Checkout() {
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
 

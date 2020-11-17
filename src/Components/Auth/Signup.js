@@ -44,7 +44,7 @@ function Signup (props){
 
     const handleSubmit =(event) => {
       event.preventDefault();
-      fetch('http://localhost:3000/user/signup/',{
+      fetch('http://localhost:4000/user/signup/',{
           method: 'POST', 
           body: JSON.stringify({user: {username: props.username, password: props.password}}),
           headers: new Headers({
@@ -83,7 +83,7 @@ function Signup (props){
 
     const checkForToken= () =>{
       if(props.sessionToken){
-        return <Redirect to= "/user"/>
+        return <Redirect to= "/createprofile"/>
       }return(console.log('no luck'))
     }
 

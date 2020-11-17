@@ -71,7 +71,7 @@ function Copyright() {
 
 // const handleFirstPageSubmit = (e) => {
 //     e.preventDefault();
-//     fetch(`http://localhost:3000/profile/`, {
+//     fetch(`http://localhost:4000/profile/`, {
 //         method: "POST",
 //         body: JSON.stringify({firstName: firstName, lastName: lastName, quirky: quirky, adventurous: adventurous, romantic: romantic, steakhouse: steakhouse, barFood: barFood, mexican: mexican, italian: italian, chinese: chinese, mediterranean: mediterranean, indian: indian, hobbyOne: hobbyOne, hobbyTwo: hobbyTwo, hobbyThree: hobbyThree}),
 //         headers: new Headers({
@@ -157,7 +157,7 @@ function getStepContent(step) {
   }
 }
 
-export function Checkout() {
+export default function Checkout() {
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
 
@@ -202,7 +202,7 @@ const profileData = {
 
 const handleFirstPageSubmit = (e) => {
     e.preventDefault();
-    fetch(`http://localhost:3000/profile/`, {
+    fetch(`http://localhost:4000/profile/`, {
         method: "POST",
         body: JSON.stringify({firstName: firstName, lastName: lastName, quirky: quirky, adventurous: adventurous, romantic: romantic, steakhouse: steakhouse, barFood: barFood, mexican: mexican, italian: italian, chinese: chinese, mediterranean: mediterranean, indian: indian, hobbyOne: hobbyOne, hobbyTwo: hobbyTwo, hobbyThree: hobbyThree}),
         headers: new Headers({
@@ -242,7 +242,7 @@ const handleFirstPageSubmit = (e) => {
 
 //   const handleSubmit = (e) => {
 //       e.preventDefault();
-//       fetch('http://localhost:3000/profile/', {
+//       fetch('http://localhost:4000/profile/', {
 //           method: 'POST',
 //           body: JSON.stringify({profile:  {}})
 //       })

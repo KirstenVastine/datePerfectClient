@@ -149,15 +149,15 @@ export default function ViewMatchProfile(props) {
 
 
 const fetchProfiles = () =>{
-    fetch('http://localhost:3000/profile/all', {
-        method: 'GET',
-        headers: new Headers ({
-            'Content-Type': 'application/json',
-            'Authorization':props.sessionToken
-        })
+    fetch('http://localhost:4000/profile/all', {
+        method: 'GET'
+        // headers: new Headers ({
+            // 'Content-Type': 'application/json',
+            // 'Authorization':props.sessionToken
+        // })
     }).then((res=> res.json()))
     .then((json) => {
-        // console.log(json)
+        console.log(json)
         setProfile(json) //taking information from the server and setting it to our state
     })
 }

@@ -81,8 +81,9 @@ function DatePlan(props) {
     setToggle("gift");
   };
 
-  const handleClickOpen = () => {
+  const handleClickOpen = (e) => {
     setOpen(true);
+    
   };
   const handleClose = () => {
     setOpen(false);
@@ -119,7 +120,7 @@ function DatePlan(props) {
           ) : toggle === "gift" ? (
             <DatePlanGift />
           ) : (
-            <DatePlanHome profile={props.profile} />
+            <DatePlanHome matchName={props.matchName} username={props.username} profile={props.profile} />
           )}
         </DialogContent>
         <DialogActions>

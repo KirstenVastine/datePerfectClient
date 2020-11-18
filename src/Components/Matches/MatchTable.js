@@ -145,7 +145,26 @@ const useStyles = makeStyles((theme) => ({
 export default function ViewMatchProfile(props) {
   const classes = useStyles();
   const [profile, setProfile] = useState([]); 
+  const[pageNumber, setPageNumber] = useState(0);
+  // const[myName, setMyName] =useState('name')
+  const[matchName, setMatchName] = useState('matchName')
 
+  
+
+
+  const changePageNumber= (event, direction) =>{
+    event.preventDefault()
+    if(direction ==='down'){
+      if(pageNumber >0) {
+        setPageNumber(pageNumber-1);
+        fetchProfiles();
+      }
+    }
+    if(direction === 'up') {
+      setPageNumber(pageNumber + 1);
+      fetchProfiles();
+    }
+  }
 
 
 const fetchProfiles = () =>{
@@ -165,9 +184,12 @@ const fetchProfiles = () =>{
 
 useEffect(() => {
     fetchProfiles();
+   
 }, [])
 
 console.log(profile)
+
+
 
 
   return (
@@ -214,16 +236,23 @@ console.log(profile)
                   <ListItemAvatar>
                     <Avatar alt="Profile Picture" src={url} />
                   </ListItemAvatar>
-                  <ListItemText primary={name} secondary={age} />
-                  <DatePlan profile={profile}  />
+                  <ListItemText primary={name} secondary={age} value={name} onClick={(e) => setMatchName(name) }  />
+                  <DatePlan matchName={matchName} username={props.username} profile={profile}  />
                 </ListItem>
+                
               </React.Fragment>
+              
           
             ))}
+        
           </List>
-       
+          <div>
+          <button onClick={(e)=> changePageNumber(e, 'down')}>Previous 10</button>
+          <button onClick={(e)=> changePageNumber(e, 'up')}>Next 10</button>
+          </div>
           
         </Paper>
+        
        
       
       </React.Fragment>

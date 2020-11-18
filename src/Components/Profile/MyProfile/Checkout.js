@@ -207,7 +207,7 @@ const handleFirstPageSubmit = (e) => {
         body: JSON.stringify({firstName: firstName, lastName: lastName, quirky: quirky, adventurous: adventurous, romantic: romantic, steakhouse: steakhouse, barFood: barFood, mexican: mexican, italian: italian, chinese: chinese, mediterranean: mediterranean, indian: indian, hobbyOne: hobbyOne, hobbyTwo: hobbyTwo, hobbyThree: hobbyThree}),
         headers: new Headers({
             'Content-Type': 'application/json',
-            // 'Authorization': props.token
+            'Authorization': props.token
         })
     }) .then((res) => console.log(res))
     .then((firstPageData) => {

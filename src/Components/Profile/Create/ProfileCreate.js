@@ -7,7 +7,7 @@ function ProfileCreate () {
     return(
 
         <div>
-            <ProfileCreate />
+            
         </div>
 
     ) 

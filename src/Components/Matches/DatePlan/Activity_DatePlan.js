@@ -1,5 +1,6 @@
 import React from "react";
 import Typography from '@material-ui/core/Typography';
+import Axethrow from '../../../Assets/axethrow.jpg'
 
 
 function DatePlanActivity(props) {
@@ -7,9 +8,8 @@ function DatePlanActivity(props) {
 
     <div>
           <Typography className= "cardText" gutterBottom>
-            <h3>Charlie E</h3>
-            <i class="far fa-heart heartModal smallHeart"></i>
-            <h3>Kelly S</h3>
+          <img src={Axethrow}></img>
+           
           </Typography>
           <Typography className= "cardText" gutterBottom>
           <p>This is the Activity Page</p>

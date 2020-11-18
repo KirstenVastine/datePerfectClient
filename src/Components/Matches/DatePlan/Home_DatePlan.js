@@ -9,9 +9,9 @@ function DatePlanHome(props) {
 
     <div>
           <Typography className= "cardText" gutterBottom>
-            <h3>{props.profile[0].name}</h3>
+            <h3>{props.username}</h3>
             <i class="far fa-heart heartModal smallHeart"></i>
-            <h3>Kelly S</h3>
+            <h3>{props.matchName}</h3>
           </Typography>
           <Typography className= "cardText" gutterBottom>
           <p>We've planned the perfect date for you!</p>

@@ -146,7 +146,7 @@ const steps = ['Lets make a start', 'Food Preferences', 'Activities'];
 function getStepContent(step) {
   switch (step) {
     case 0:
-      return <InterestPref  />;
+      return <InterestPref />;
     case 1:
       return <Cuisine/>;
     case 2:
@@ -158,7 +158,7 @@ function getStepContent(step) {
   }
 }
 
-export default function Checkout() {
+export default function Checkout(props) {
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
 

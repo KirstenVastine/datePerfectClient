@@ -157,19 +157,20 @@ export default function ViewMatchProfile(props) {
     if(direction ==='down'){
       if(pageNumber >0) {
         setPageNumber(pageNumber-1);
-        fetchProfiles();
+        fetchProfiles(pageNumber -1);
       }
     }
     if(direction === 'up') {
       setPageNumber(pageNumber + 1);
-      fetchProfiles();
+      fetchProfiles(pageNumber + 1);
     }
   }
 
 
-const fetchProfiles = () =>{
+const fetchProfiles = (p) =>{
    console.log(props.sessionToken)
-    fetch('http://localhost:4000/profile/all', {
+   console.log(p)
+    fetch(`http://localhost:4000/profile/all${p !== undefined ? `?page=${p}`:"" }`, {
         method: 'GET',
         headers: new Headers({
             'Content-Type': 'application/json',
@@ -180,10 +181,11 @@ const fetchProfiles = () =>{
         console.log("matchtable", json)
         setProfile(json) //taking information from the server and setting it to our state
     })
+  
 }
 
 useEffect(() => {
-    fetchProfiles();
+    fetchProfiles(0);
    
 }, [])
 
@@ -232,12 +234,12 @@ console.log(profile)
           <List className={classes.list}>
             {profile.map(({id, firstName, lastName, picURL}) => (
               <React.Fragment key={id}>
-                <ListItem button >
+                <ListItem >
                   <ListItemAvatar>
                     <Avatar alt="Profile Picture" src={picURL} />
                   </ListItemAvatar>
-                  <ListItemText primary={firstName} secondary={lastName} value={firstName} onClick={(e) => setMatchName(firstName) }  />
-                  <DatePlan matchName={matchName} username={props.username} profile={profile}  />
+                  <ListItemText primary={firstName} secondary={lastName} value={firstName}  />
+                  <DatePlan matchName={firstName} username={props.username} profile={profile}  />
                 </ListItem>
                 
               </React.Fragment>

@@ -16,6 +16,7 @@ import Cuisine from './Cuisine';
 import Hobbies from './Hobbies';
 
 
+
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
@@ -150,8 +151,8 @@ function getStepContent(step) {
       return <Cuisine/>;
     case 2:
       return <Hobbies />;
-    case 3:
-      return <Checkout />;
+    // case 3:
+    //   return <Checkout />;
     default:
       throw new Error('Unknown step');
   }
@@ -253,11 +254,6 @@ const handleFirstPageSubmit = (e) => {
     <React.Fragment>
       <CssBaseline />
       <AppBar position="absolute" color="default" className={classes.appBar}>
-        <Toolbar>
-          <Typography variant="h6" color="inherit" noWrap>
-            Company name
-          </Typography>
-        </Toolbar>
       </AppBar>
       <main className={classes.layout}>
         <Paper className={classes.paper}>

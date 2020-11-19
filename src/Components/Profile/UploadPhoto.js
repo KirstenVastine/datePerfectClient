@@ -65,7 +65,7 @@ const Upload = (props) => {
           Authorization: props.sessionToken,
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ profile: { url: results.secure_url } }),
+        body: JSON.stringify({ profile: { picURL: results.secure_url } }),
       })
     ).json();
   };

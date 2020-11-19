@@ -1,70 +1,47 @@
-# Getting Started with Create React App
+![Image](../asset/datePerfect)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Welcome to datePerfect App
+----------------------------
+*where we take the guess work out of love*
+by **Jessica Bushong, Kirsten Vastine and Mansa Samlafo**
 
-## Available Scripts
+## Introduction
+The purpose of the app is to create a perfect date matching app for the user based on the age, interests, activities and food that the applicant likes. The app even tells you what gift to buy your date and what topics you can discuss on your first date.
 
-In the project directory, you can run:
+### Built with
+--------------
+1. Node: Used for the server application build
+2. React: Incorporated in the frontend build
+3. Material UI: Used for application design/styling which gave it the professional look.
 
-### `npm start`
+## Project Planning:
+Initial stages of the project was spent carefully planning the details using Tello on a high level. This was then layed out in lucid to provide a more detailed structure and allow us to see the flow of information from the server-side to the frontend and vice versa. Figma was incorporated to provide the mockup for all our app pages. Links to our project planning, diagrams and flowchart are listed below this page.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Project Setup and Key Features
+The server side with a total of 7 endpoints was first built out. This was made up of two user endpoints(login and signup) and 5 profile endpoints(create profile, view profile by id, view profile by name, update and delete). Verification and creation of tokens and JWT_SECRET were incorporated to improve the security of the application and minimize unauthorized processes on the app. 
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+The signin and signup section allows a user to log into th app.
+The profile section is completed by the user and information from this section is collected and stored in postgres database. This is used along with logic in matching our user to the perfect date.
+The update profile functionality  allows the user to make changes to their profile.
+A user who decides to opt out of the dating app has the ability to delete their information from the applicaiton. This functionality automatically logs out the user. This is an added security measure we incorporated to ensure that non-users do not have the ability to see or search profiles of other users.
 
-### `npm test`
+### Coding fact/Things you will notice
+Spread throughout our code is a lot of ternaries.  
+```
+```<datePerfect ? "Best dating app" : "Other dating app">```
+``` 
+A lot of the functionality of the app was achieve using this logic. The React app favicon was replaced with one that we created: **VBS**.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Planning tools
+* Click [datePerfect lucid flow diagram](https://lucid.app/lucidchart/b519e946-8153-435d-86b5-eb6965800d49/edit?shared=true&page=0_0#?folder_id=home&browser=icon) to view in the browser.
 
-### `npm run build`
+* Click [datePerfect App Mockup](https://www.figma.com/file/qiPPSDMS35pkg6ZcxfDVQP/Date-Perfect?node-id=0%3A1) to view in your browser.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+* Click [datePerfect Tello board](https://trello.com/b/hDpk6NEp/blue-badge-project-ideas) to view in your browser
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+                                                  `Elevenfifty Academy © VBS 2020`
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

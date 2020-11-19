@@ -2,6 +2,7 @@ import { createMuiTheme } from '@material-ui/core/styles';
 
 const dateBlack= "#100B00";
 const datePurple= "#561AB9";
+const dateGreen= "#85CB33";
 
 export default createMuiTheme({
     palette:{
@@ -14,6 +15,9 @@ export default createMuiTheme({
         },
         secondary: {
             main:`${datePurple}`
+        },
+        success:{
+            main:`${dateGreen}`
         }
     },
     typography:{

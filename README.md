@@ -8,7 +8,7 @@ by **Jessica Bushong, Kirsten Vastine and Mansa Samlafo**
 ## Introduction
 The purpose of the app is to create a perfect date matching app for the user based on the age, interests, activities and food that the applicant likes. The app even tells you what gift to buy your date and what topics you can discuss on your first date.
 
-## Built with
+### Built with
 --------------
 1. Node: Used for the server application build
 2. React: Incorporated in the frontend build
@@ -25,10 +25,10 @@ The profile section is completed by the user and information from this section i
 The update profile functionality  allows the user to make changes to their profile.
 A user who decides to opt out of the dating app has the ability to delete their information from the applicaiton. This functionality automatically logs out the user. This is an added security measure we incorporated to ensure that non-users do not have the ability to see or search profiles of other users.
 
-## Coding fact/Things you will notice
+### Coding fact/Things you will notice
 Spread throughout our code is a lot of ternaries.  
 ```
-```<dating app ? "datePerfect app" : "not the right app">```
+```<datePerfect ? "Best dating app" : "Other dating app">```
 ``` 
 A lot of the functionality of the app was achieve using this logic. The React app favicon was replaced with one that we created: **VBS**.
 

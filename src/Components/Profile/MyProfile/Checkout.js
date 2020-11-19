@@ -16,6 +16,7 @@ import Cuisine from './Cuisine';
 import Hobbies from './Hobbies';
 
 
+
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
@@ -71,7 +72,7 @@ function Copyright() {
 
 // const handleFirstPageSubmit = (e) => {
 //     e.preventDefault();
-//     fetch(`http://localhost:3000/profile/`, {
+//     fetch(`http://localhost:4000/profile/`, {
 //         method: "POST",
 //         body: JSON.stringify({firstName: firstName, lastName: lastName, quirky: quirky, adventurous: adventurous, romantic: romantic, steakhouse: steakhouse, barFood: barFood, mexican: mexican, italian: italian, chinese: chinese, mediterranean: mediterranean, indian: indian, hobbyOne: hobbyOne, hobbyTwo: hobbyTwo, hobbyThree: hobbyThree}),
 //         headers: new Headers({
@@ -150,14 +151,14 @@ function getStepContent(step) {
       return <Cuisine/>;
     case 2:
       return <Hobbies />;
-    case 3:
-      return <Checkout />;
+    // case 3:
+    //   return <Checkout />;
     default:
       throw new Error('Unknown step');
   }
 }
 
-export function Checkout() {
+export default function Checkout() {
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
 
@@ -202,12 +203,12 @@ const profileData = {
 
 const handleFirstPageSubmit = (e) => {
     e.preventDefault();
-    fetch(`http://localhost:3000/profile/`, {
+    fetch(`http://localhost:4000/profile/`, {
         method: "POST",
         body: JSON.stringify({firstName: firstName, lastName: lastName, quirky: quirky, adventurous: adventurous, romantic: romantic, steakhouse: steakhouse, barFood: barFood, mexican: mexican, italian: italian, chinese: chinese, mediterranean: mediterranean, indian: indian, hobbyOne: hobbyOne, hobbyTwo: hobbyTwo, hobbyThree: hobbyThree}),
         headers: new Headers({
             'Content-Type': 'application/json',
-            'Authorization': props.token
+            // 'Authorization': props.token
         })
     }) .then((res) => console.log(res))
     .then((firstPageData) => {
@@ -242,7 +243,7 @@ const handleFirstPageSubmit = (e) => {
 
 //   const handleSubmit = (e) => {
 //       e.preventDefault();
-//       fetch('http://localhost:3000/profile/', {
+//       fetch('http://localhost:4000/profile/', {
 //           method: 'POST',
 //           body: JSON.stringify({profile:  {}})
 //       })
@@ -253,11 +254,6 @@ const handleFirstPageSubmit = (e) => {
     <React.Fragment>
       <CssBaseline />
       <AppBar position="absolute" color="default" className={classes.appBar}>
-        <Toolbar>
-          <Typography variant="h6" color="inherit" noWrap>
-            Company name
-          </Typography>
-        </Toolbar>
       </AppBar>
       <main className={classes.layout}>
         <Paper className={classes.paper}>

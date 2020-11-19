@@ -13,7 +13,12 @@ import Checkbox from '@material-ui/core/Checkbox';
 import ReactDOM from 'react-dom';
 import Button from '@material-ui/core/Button';
 import { getThemeProps } from '@material-ui/styles';
-
+//Below is for the radio buttons;
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+// import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormControl from '@material-ui/core/FormControl';
+import FormLabel from '@material-ui/core/FormLabel';
 
 
 function InterestPref (props) {
@@ -21,6 +26,11 @@ function InterestPref (props) {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [favoriteDate, setFavoriteDate] = useState('');
+
+    const [value, setValue] = React.useState('');
+  const handleChange = (event) => {
+    setValue(event.target.value)
+  };
 
     return (
         <React.Fragment>
@@ -57,8 +67,19 @@ function InterestPref (props) {
       </Typography>
       </Grid>
 
+      <FormControl component="fieldset">
+      <FormLabel component="legend">Favorite type of date night:</FormLabel>
+      <br />
+      <RadioGroup aria-label="dateNight" name="dateNight" value={value} onChange={handleChange}>
+        <FormControlLabel value="Quirky and Fun" control={<Radio />} label="Quirky and Fun" />
+        <FormControlLabel value="male" control={<Radio />} label="Outdoorsy and Adventurous" />
+        <FormControlLabel value="other" control={<Radio />} label="Romantic and Thoughtful" />
+        {/* <FormControlLabel value="disabled" disabled control={<Radio />} label="(Disabled option)" /> */}
+      </RadioGroup>
+    </FormControl>
 
-        <Grid item xs={12}>
+
+        {/* <Grid item xs={12}>
           <FormControlLabel
             control={<Checkbox color="secondary" name="saveAddress" value="yes" />}
             label="Quirky and Fun"
@@ -75,7 +96,7 @@ function InterestPref (props) {
             control={<Checkbox color="secondary" name="saveAddress" value="yes" />}
             label="Romantic and Thoughtful"
           />
-        </Grid>
+        </Grid> */}
       </Grid>
     </React.Fragment>
   );

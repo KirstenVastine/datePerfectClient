@@ -17,7 +17,8 @@ function Cuisine () {
         {/* <p>Is there any type of cuisine you do NOT like?
           </p> */}
            <Typography variant="h6" gutterBottom>
-           Is there any type of cuisine you do NOT like?
+           {/* Is there any type of cuisine you do NOT like? */}
+           What are your favorite types of cuisine?
          </Typography>
           <Grid item xs={12}>
             <FormControlLabel

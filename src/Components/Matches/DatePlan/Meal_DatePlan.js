@@ -11,6 +11,7 @@ import Typography from '@material-ui/core/Typography';
 import { Route, Link } from "react-router-dom";
 import Fab from "@material-ui/core/Fab";
 import AssignmentIcon from "@material-ui/icons/Assignment";
+import Chuys from "../../../Assets/Chuys.jpg"
 
 
 function DatePlanMeal(props) {
@@ -18,9 +19,7 @@ function DatePlanMeal(props) {
 
     <div>
           <Typography className= "cardText" gutterBottom>
-            <h3>Charlie E</h3>
-            <i class="far fa-heart heartModal smallHeart"></i>
-            <h3>Kelly S</h3>
+          <img src={Chuys}></img>
           </Typography>
           <Typography className= "cardText" gutterBottom>
           <p>This is the  Meal Page</p>

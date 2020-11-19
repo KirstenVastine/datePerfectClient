@@ -15,6 +15,7 @@ import DatePlan from "./Components/Matches/DatePlan/DatePlan"
 import DatePlanActivity from "./Components/Matches/DatePlan/Activity_DatePlan";
 import ViewProfile from "./Components/Profile/MyProfile/ViewProfile";
 import Upload from "./Components/Profile/UploadPhoto";
+import ProfileCreate from "./Components/Profile/Create/ProfileCreate"
 
 
 const button = "four";
@@ -141,6 +142,10 @@ function App() {
         
         <Route exact path="/user/match">
         <MatchTable username={username}  sessionToken={sessionToken}/>
+        </Route>
+
+        <Route exact path="/createprofile">
+        <ProfileCreate username={username}  sessionToken={sessionToken}/>
         </Route>
 
       </BrowserRouter>

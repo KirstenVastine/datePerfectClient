@@ -230,13 +230,13 @@ console.log(profile)
       </div>
      
           <List className={classes.list}>
-            {profile.map(({id, name, age, url}) => (
+            {profile.map(({id, firstName, lastName, picURL}) => (
               <React.Fragment key={id}>
                 <ListItem button >
                   <ListItemAvatar>
-                    <Avatar alt="Profile Picture" src={url} />
+                    <Avatar alt="Profile Picture" src={picURL} />
                   </ListItemAvatar>
-                  <ListItemText primary={name} secondary={age} value={name} onClick={(e) => setMatchName(name) }  />
+                  <ListItemText primary={firstName} secondary={lastName} value={firstName} onClick={(e) => setMatchName(firstName) }  />
                   <DatePlan matchName={matchName} username={props.username} profile={profile}  />
                 </ListItem>
                 

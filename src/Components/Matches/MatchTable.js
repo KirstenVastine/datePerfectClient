@@ -15,7 +15,7 @@ import SearchIcon from "@material-ui/icons/Search";
 import AssignmentIcon from "@material-ui/icons/Assignment";
 import InputBase from "@material-ui/core/InputBase";
 import DatePlan from "./DatePlan/DatePlan";
-
+import Button from '@material-ui/core/Button'
 
 
 
@@ -166,6 +166,23 @@ export default function ViewMatchProfile(props) {
     }
   }
 
+ const handleButton= () =>{
+   console.log(profile)
+    //  {profile.length <= 0 ? {style= {display:"block"}} :  {style= {display:"block"}}}
+ }
+  // {profile.length <= 0 ? {style= {display:"block"}} :  {style= {display:"block"}}}
+  
+  // if (articles.length >= 10) {
+  //   nextBtn.style.display = "block";
+  // } else {
+  //   nextBtn.style.display = "none"; 
+  // }
+
+  // if (pageNumber <= 0) {
+  //   previousBtn.style.display = "none";
+  // } else {
+  //   previousBtn.style.display = "block";
+  // }
 
 const fetchProfiles = (p) =>{
    console.log(props.sessionToken)
@@ -189,6 +206,10 @@ useEffect(() => {
    
 }, [])
 
+
+
+
+
 console.log(profile)
 
 
@@ -209,12 +230,13 @@ console.log(profile)
         <Paper square id="paper" className={classes.paper}>
         <div  className={classes.root}>
         <AppBar  id="matchBar" position="static">
-          <Toolbar  >
+          <Toolbar style={{width:'100%'}}  >
+          
 
             <Typography className={classes.title} variant="h6" noWrap>
             
             </Typography>
-            <div className={classes.search}>
+            <div className= "search"  className={classes.search} >
               <div className={classes.searchIcon}>
                 <SearchIcon />
               </div>
@@ -226,9 +248,17 @@ console.log(profile)
                 }}
                 inputProps={{ 'aria-label': 'search' }}
               />
+              
             </div>
-          </Toolbar>
+            <div className="pageButton" >
+            <Button  variant="contained" color="secondary" style={pageNumber===0 ? {display:'none'}: {display:'inline-block'}} onClick={(e)=> changePageNumber(e, 'down')}>Previous 5</Button>
+            <Button variant="contained" color="secondary"  style={profile.length >= 5 ? {display:'inline-block'}: {display:'none'}} onClick={(e)=> changePageNumber(e, 'up')}>Next 5</Button>
+            </div>
+            </Toolbar>
+    
+          
         </AppBar>
+
       </div>
      
           <List className={classes.list}>
@@ -239,7 +269,7 @@ console.log(profile)
                     <Avatar alt="Profile Picture" src={picURL} />
                   </ListItemAvatar>
                   <ListItemText primary={firstName +" " + lastName} secondary={location} value={firstName}  />
-                  <DatePlan matchFirstName={firstName} matchLastName={lastName} email={email} picURL={picURL} username={props.username} profile={profile}  />
+                  <DatePlan matchFirstName={firstName} matchLastName={lastName} email={email} picURL={picURL} username={props.username} profile={profile} userProfile={props.userProfile}  />
                 </ListItem>
                 
               </React.Fragment>
@@ -248,10 +278,7 @@ console.log(profile)
             ))}
         
           </List>
-          <div>
-          <button onClick={(e)=> changePageNumber(e, 'down')}>Previous 10</button>
-          <button onClick={(e)=> changePageNumber(e, 'up')}>Next 10</button>
-          </div>
+
           
         </Paper>
         

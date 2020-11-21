@@ -20,7 +20,6 @@ import DynamicSnackBar from './Components/Profile/MyProfile/DynamicSnackBar';
 
 const button = "four";
 
-
 function App() {
   const [sessionToken, setSessionToken] = useState("");
   const [username, setUsername] = useState("");
@@ -74,7 +73,6 @@ function App() {
 
   return (
 
-
     <ThemeProvider theme={theme}>
 
       {protectedViews}
@@ -85,64 +83,65 @@ function App() {
         severity={snackBarSeverity} />
 
       <BrowserRouter>
-      <Route path="/">
-      <Sitebar 
-        sessionToken={sessionToken}
-        clickLogout={clearToken}
-        setSnackBarMsg={setSnackBarMsg}
-        setSnackBarSeverity={setSnackBarSeverity} 
-        setShowSnackBar={setShowSnackBar}
-      />
-      </Route>
-
-      
-  
-        
-          
+        <Route path="/">
+          <Sitebar 
+            sessionToken={sessionToken}
+            clickLogout={clearToken}
+            setSnackBarMsg={setSnackBarMsg}
+            setSnackBarSeverity={setSnackBarSeverity} 
+            setShowSnackBar={setShowSnackBar}
+          />
+        </Route>
          
         <Route exact path="/">
-        <Logo updateToken={updateToken}
-        setUsername={setUsername}
-        username={username}
-        password={password}
-        setPassword={setPassword}/>
+          <Logo updateToken={updateToken}
+            setUsername={setUsername}
+            username={username}
+            password={password}
+            setPassword={setPassword}/>
         </Route>
 
         <Route exact path="/login">
          <Login setUsername={setUsername} username={username}
-         password={password}
-         sessionToken={sessionToken}
-         setPassword={setPassword}
-         updateToken={updateToken}/>
-         </Route>
+            password={password}
+            sessionToken={sessionToken}
+            setPassword={setPassword}
+            updateToken={updateToken}/>
+        </Route>
         
-         <Route exact path="/signup">
-         <Signup setUsername={setUsername} username={username}
-         password={password}
-         sessionToken={sessionToken}
-         setPassword={setPassword}
-         updateToken={updateToken}/>
+        <Route exact path="/signup">
+          <Signup setUsername={setUsername} username={username}
+            password={password}
+            sessionToken={sessionToken}
+            setPassword={setPassword}
+            updateToken={updateToken}/>
+        </Route>
+
+        <Route exact path="/profile">
+          <ViewProfile 
+            setUsername={setUsername}
+            username={username}
+            password={password}
+            sessionToken={sessionToken}
+            setPassword={setPassword}
+            updateToken={updateToken}
+            setSnackBarMsg={setSnackBarMsg}
+            setSnackBarSeverity={setSnackBarSeverity} 
+            setShowSnackBar={setShowSnackBar}
+            userProfile={userProfile} setUserProfile={setUserProfile}
+          />
          </Route>
 
-         <Route exact path="/profile">
-         <ViewProfile setUsername={setUsername} username={username}
-         password={password}
-         sessionToken={sessionToken}
-         setPassword={setPassword}
-         updateToken={updateToken}
-         userProfile={userProfile} setUserProfile={setUserProfile}/>
-         </Route>
-
-         <Route exact path="/upload">
-         <Upload setUsername={setUsername} username={username}
-         password={password}
-         sessionToken={sessionToken}
-         setPassword={setPassword}
-         updateToken={updateToken}/>
-         </Route>
+        <Route exact path="/upload">
+          <Upload setUsername={setUsername} username={username}
+              password={password}
+              sessionToken={sessionToken}
+              setPassword={setPassword}
+              updateToken={updateToken}/>
+        </Route>
 
 
-         <Route exact path="/date">
+        <Route exact path="/date">
          <DatePlan setUsername={setUsername} username={username}
          password={password}
          sessionToken={sessionToken}

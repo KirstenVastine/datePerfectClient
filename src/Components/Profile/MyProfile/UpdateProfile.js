@@ -39,17 +39,14 @@ export default function UpdateProfile(props) {
   const [hobby1, setHobby1] = useState('');
   const [hobby2, setHobby2] = useState('');
   const [hobby3, setHobby3] = useState('');
-  
-  //unnecessary, remove hobbies, setHobbies
-  const [hobbies, setHobbies] = useState('');
-  
 
   React.useEffect(()=>{
+    //using the '?' helps prevent react message "cannot find item of undefined which happens when you do a dot on an empty object"
     setFirstName(profileToUpdate?.firstName);
     setLastName(profileToUpdate?.lastName);
     setLocation(profileToUpdate?.location);
-    setInterestedIn(profileToUpdate?.interestedIn);
-    setGender(profileToUpdate?.gender);
+    // setInterestedIn(profileToUpdate?.interestedIn);
+    // setGender(profileToUpdate?.gender);
     setdateType(profileToUpdate?.dateType);
     setCuisine(profileToUpdate?.cuisine);
     setPicUrl(profileToUpdate?.picUrl);
@@ -112,14 +109,14 @@ export default function UpdateProfile(props) {
         console.log('This was a success');
         setSnackBarMsg('Profile updated successfully!!!');
         setSnackBarSeverity('success');
-        reload = true;//setReload(true)
+        reload = true;
       }
       else{
         console.log('This was a failure');
         setSnackBarMsg('Profile update failed!!!');
         setSnackBarSeverity('error');
       }
-      // handleClose(reload);
+      handleClose(reload);
       setShowSnackBar(true);
       console.log(result);
     })
@@ -128,26 +125,31 @@ export default function UpdateProfile(props) {
 
   return (
     <div className="mainDiv">
-      <form onSubmit={e => profileEdit(e)}>
-        <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-          <DialogTitle id="form-dialog-title">Profile Edit</DialogTitle>
+        <Dialog 
+          open={open} 
+          onClose={handleClose} 
+          aria-labelledby="form-dialog-title"
+        >
+          <DialogTitle id="form-dialog-title">
+            Profile Edit
+          </DialogTitle>
           <DialogContent>
             <DialogContentText>
               Edit your profile
             </DialogContentText>
             <Upload sessionToken={token}/>
-              <Grid container spacing={3}>
-                <Grid item xs={12} sm={6}>
-                  <TextField
-                    autoFocus
-                    margin="dense"
-                    id="firstname"
-                    label="First Name"
-                    value={firstName}
-                    onChange={e => setFirstName(e.target.value)}
-                    fullWidth
-                  />
-                </Grid>
+            <Grid container spacing={3}>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  autoFocus
+                  margin="dense"
+                  id="firstname"
+                  label="First Name"
+                  value={firstName}
+                  onChange={e => setFirstName(e.target.value)}
+                  fullWidth
+                />
+              </Grid>
                 <Grid item xs={12} sm={6}>
                   <TextField
                     autoFocus
@@ -202,8 +204,8 @@ export default function UpdateProfile(props) {
                   />
               </Grid>
             </Grid>
-            <Grid container spacing={3}>
-              <Grid item xs={12} sm={6}>
+            {/*<Grid container spacing={3}>
+               <Grid item xs={12} sm={6}>
                 <TextField
                   autoFocus
                   margin="dense"
@@ -227,7 +229,7 @@ export default function UpdateProfile(props) {
                   onChange={e =>setInterestedIn(e.target.value)}
                 />
               </Grid>
-            </Grid>
+            </Grid> */}
           {/* <Grid container spacing={3}>        */}
           {/* <FormControl component="fieldset">
             <FormLabel component="legend">Gender</FormLabel>
@@ -306,12 +308,11 @@ export default function UpdateProfile(props) {
             <Button onClick={handleClose} color="primary">
               Cancel
             </Button>
-            <Button onClick={e => profileEdit(e)} handleClose={handleClose} color="primary">
+            <Button onClick={e => profileEdit(e)} color="primary">
               Update
             </Button>
           </DialogActions>
         </Dialog>
-      </form>
     </div>
   );
 }

@@ -5,21 +5,10 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
-import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import EditIcon from '@material-ui/icons/Edit';
 import Fab from '@material-ui/core/Fab';
-import TextField from '@material-ui/core/TextField';
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import Grid from '@material-ui/core/Grid';
 import UpdateProfile from './UpdateProfile';
-import DynamicSnackBar from './DynamicSnackBar';
-import UploadPhoto from '../UploadPhoto';
-
 
 const useStyles = makeStyles({
   root: {
@@ -31,37 +20,30 @@ const useStyles = makeStyles({
 });
 
 export default function ViewProfile(props) {
+  const {
+    setSnackBarSeverity,
+    setShowSnackBar,
+    setSnackBarMsg
+  } = props;
+
   const [open, setOpen] = React.useState(false);
   // const [userProfile, setUserProfile]  = React.useState([]);
-  const [showSnackBar, setShowSnackBar]= React.useState(false);
-  const [snackBarMsg, setSnackBarMsg] = React.useState('Processing');
-  const [snackBarSeverity, setSnackBarSeverity] = React.useState('info');
+  // const [showSnackBar, setShowSnackBar]= React.useState(false);
+  // const [snackBarMsg, setSnackBarMsg] = React.useState('Processing');
+  // const [snackBarSeverity, setSnackBarSeverity] = React.useState('info');
   const [reload, setReload] = React.useState(false);
-
 
   const handleClickOpen = () => {
     setOpen(true);
   };
 
-  const handleClose = () => {
+  const handleClose = (reload=false) => {
     setOpen(false);
     if(reload)
       setReload(true);
   };
 
-  const handleSnackbarClose = (event, reason) => {
-    if (reason === 'clickaway') {
-      return;
-    }
-    setShowSnackBar(false);
-    setSnackBarMsg('Processing');
-    setSnackBarSeverity('info');
-  }
   const classes = useStyles();
-
-  // const userprofileBioDisplay = () =>{
-  //   {userProfile.bio} ? `${userProfile.bio}` : "This is all about me and me and me and me and me";
-  // }
 
   React.useEffect(()=>{
     const getProfile = () => {
@@ -84,8 +66,6 @@ export default function ViewProfile(props) {
     setReload(false);
     //console.log(userProfile);
   },[reload]);
-
-
 
   return (
     <div className= "mainDivforProfile topBorder">
@@ -141,13 +121,6 @@ export default function ViewProfile(props) {
         setShowSnackBar={setShowSnackBar}
         setReload={setReload}
         />
-
-      <DynamicSnackBar
-        open={showSnackBar} 
-        handleClose={handleSnackbarClose}
-        message={snackBarMsg}
-        severity={snackBarSeverity} />
-    
     </div>
   );
 }

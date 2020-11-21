@@ -203,10 +203,11 @@
 
 .heartModal{
   display:flex;
-  justify-content: center;
   align-items: center;
   margin-left: 10px;
   margin-right:10px;
+  margin-bottom: 25%;
+  font-size: 200%;
 }
 
 .modalTitle{
@@ -219,7 +220,6 @@
   background-color:#100B00;
   display: flex;
   
-
 }
 
 #connect{
@@ -228,6 +228,13 @@
   margin-left:auto;
   letter-spacing: 5px;
   font-size: 1.25rem;
+
+}
+
+.connect1{
+  margin-right: auto;
+  margin-left:auto;
+  text-decoration: none;
 }
 
 .fa-envelope{
@@ -247,4 +254,13 @@
 
 .chip:hover{
   cursor: pointer;
+}
+
+.title_pic{
+  display:flex;
+  flex-direction: column;
+}
+
+.name{
+  transform: translateX(20%);
 }

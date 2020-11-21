@@ -4,13 +4,35 @@ import ViewMatchProfile from "./../../Components/Matches/ViewMatchProfile";
 import { Link } from "react-router-dom";
 
 function VerifiedUserView(props) {
+
+  React.useEffect(()=>{
+    const getProfile = () => {
+      fetch(`http://localhost:4000/profile/`, 
+      {
+        method: "GET",
+        headers: new Headers ({
+          'Content-Type': 'application/json',
+          'Authorization': localStorage.getItem("token")
+        })
+      } )
+      .then((result) => result.json())
+      .then((profile) => {
+        console.log(profile);
+        props.setUserProfile(profile[0]);
+      })
+      .catch((err) => console.log(err));
+    };
+    getProfile();
+    //console.log(userProfile);
+  },[]);
+
  
   return (
     <div className="mainDiv">
       <div className="titleDiv">
         <i class="far fa-heart heart"></i>
         <br></br>
-        <h1 className="title">{`Hello ${props.username}!`}</h1>
+        <h1 className="title">{`Hello ${props.userProfile.firstName}!`}</h1>
       </div>
       <div className="buttonDiv">
         <Chip

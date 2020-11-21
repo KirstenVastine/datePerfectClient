@@ -13,11 +13,8 @@
     "material-ui-search-bar": "^1.0.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-
-    "react-mailto": "^0.4.0",
-
     "react-draggable": "^4.4.3",
-
+    "react-mailto": "^0.4.0",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.0",

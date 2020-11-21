@@ -32,7 +32,7 @@ const useStyles = makeStyles({
 
 export default function ViewProfile(props) {
   const [open, setOpen] = React.useState(false);
-  const [userProfile, setUserProfile]  = React.useState([]);
+  // const [userProfile, setUserProfile]  = React.useState([]);
   const [showSnackBar, setShowSnackBar]= React.useState(false);
   const [snackBarMsg, setSnackBarMsg] = React.useState('Processing');
   const [snackBarSeverity, setSnackBarSeverity] = React.useState('info');
@@ -76,7 +76,7 @@ export default function ViewProfile(props) {
       .then((result) => result.json())
       .then((profile) => {
         console.log(profile);
-        setUserProfile(profile[0]);
+        props.setUserProfile(profile[0]);
       })
       .catch((err) => console.log(err));
     };
@@ -88,7 +88,7 @@ export default function ViewProfile(props) {
 
 
   return (
-    <div className= "mainDiv topBorder">
+    <div className= "mainDivforProfile topBorder">
     <Card className={classes.root}>
       <CardActionArea>
       <div className="imageContainer">
@@ -100,8 +100,8 @@ export default function ViewProfile(props) {
             {/* //img goes here */}
                
             <CardMedia />
-                <img src={userProfile.picURL} style={{ height: "200px" }} />
-                {console.log(userProfile.picURL)}
+                <img src={props.userProfile.picURL} style={{ height: "200px" }} />
+                {console.log(props.userProfile.picURL)}
                 
                   
           </div>
@@ -110,13 +110,13 @@ export default function ViewProfile(props) {
         
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
-           {userProfile?.firstName + '  ' + userProfile?.lastName}
+           {props.userProfile?.firstName + '  ' + props.userProfile?.lastName}
           </Typography>
           <Typography variant="h5" component="h4">
-          <p>{userProfile?.location}</p>
+          <p>{props.userProfile?.location}</p>
           </Typography>
           <Typography variant="body2" color="textPrimary" component="p">
-           {userProfile?.bio}
+           {props.userProfile?.bio}
             </Typography>
 
             <Typography variant="body2" color="textSeconday" component="h3">
@@ -124,7 +124,7 @@ export default function ViewProfile(props) {
             
           </Typography>
           <Typography variant="body2" color="textSeconday" component="h2">
-            {userProfile?.hobbies}
+            {props.userProfile?.hobbies}
           </Typography>
         </CardContent>
       </CardActionArea>
@@ -135,7 +135,7 @@ export default function ViewProfile(props) {
 
       <UpdateProfile 
         open={open} handleClose={handleClose} 
-        profileToUpdate={userProfile}
+        profileToUpdate={props.userProfile}
         setSnackBarMsg={setSnackBarMsg}
         setSnackBarSeverity={setSnackBarSeverity} 
         setShowSnackBar={setShowSnackBar}

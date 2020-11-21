@@ -16,7 +16,7 @@ import DatePlanActivity from "./Components/Matches/DatePlan/Activity_DatePlan";
 import ViewProfile from "./Components/Profile/MyProfile/ViewProfile";
 import Upload from "./Components/Profile/UploadPhoto";
 import ProfileCreate from "./Components/Profile/Create/ProfileCreate"
-
+import DynamicSnackBar from './Components/Profile/MyProfile/DynamicSnackBar'; 
 
 const button = "four";
 
@@ -25,7 +25,9 @@ function App() {
   const [sessionToken, setSessionToken] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-
+  const [showSnackBar, setShowSnackBar]= React.useState(false);
+  const [snackBarMsg, setSnackBarMsg] = React.useState('Processing');
+  const [snackBarSeverity, setSnackBarSeverity] = React.useState('info');
   
 
   useEffect(() => {
@@ -37,7 +39,7 @@ function App() {
   const updateToken = (newToken) => {
     localStorage.setItem("token", newToken);
     setSessionToken(newToken);
-    console.log(sessionToken);
+    console.log(newToken);
   };
 
   const protectedViews = () => {
@@ -60,17 +62,36 @@ function App() {
    
   };
 
+  const handleSnackbarClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setShowSnackBar(false);
+    setSnackBarMsg('Processing');
+    setSnackBarSeverity('info');
+  }
+
   return (
 
 
     <ThemeProvider theme={theme}>
 
       {protectedViews}
+      <DynamicSnackBar
+        open={showSnackBar} 
+        handleClose={handleSnackbarClose}
+        message={snackBarMsg}
+        severity={snackBarSeverity} />
+
       <BrowserRouter>
       <Route path="/">
       <Sitebar 
-      sessionToken={sessionToken}
-      clickLogout={clearToken}/>
+        sessionToken={sessionToken}
+        clickLogout={clearToken}
+        setSnackBarMsg={setSnackBarMsg}
+        setSnackBarSeverity={setSnackBarSeverity} 
+        setShowSnackBar={setShowSnackBar}
+      />
       </Route>
 
       
@@ -147,7 +168,6 @@ function App() {
         <Route exact path="/createprofile">
         <ProfileCreate username={username}  sessionToken={sessionToken}/>
         </Route>
-
       </BrowserRouter>
     </ThemeProvider>
   );

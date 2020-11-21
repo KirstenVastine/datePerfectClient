@@ -9,6 +9,7 @@ import Menu from "@material-ui/core/Menu";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import IconButton from "@material-ui/core/IconButton";
 import { Route, Link, Redirect } from "react-router-dom";
+import DeleteAccount from "./DeleteAccount";
 
 function ElevationScroll(props) {
   const { children } = props;
@@ -27,15 +28,29 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Sitebar(props) {
+  const [open, setOpen] = React.useState(false);
+  const [profile, setProfile] = React.useState([])
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const {
+    setSnackBarMsg,
+    setSnackBarSeverity,
+    setShowSnackBar
+  } = props;
+
+  const {clickLogout} = props;
 
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
   };
 
+  const handleCloseForDeleteAccount = () => {
+    setOpen(false);
+  };
+
   const handleClose = () => {
     setAnchorEl(null);
+    props.clickLogout();
   };
 
 const checkForToken= () =>{
@@ -45,6 +60,10 @@ const checkForToken= () =>{
     return <Redirect to="/user"/>
   }
 }
+
+const handleClickOpen = () => {
+  setOpen(true);
+};
 
 
 
@@ -85,15 +104,26 @@ const checkForToken= () =>{
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
               >
-                <MenuItem onClick={handleClose} onClick={props.clickLogout}>
+                <MenuItem onClick={handleClose}>
                   Logout
                 </MenuItem>
-                <MenuItem onClick={handleClose}>Delete my Account</MenuItem>
+                <MenuItem onClick={handleClickOpen}>
+                  Delete my Account
+                </MenuItem>
               </Menu>
             </div>
           </Toolbar>
         </AppBar>
       </ElevationScroll>
+      <DeleteAccount open={open}  
+        accountToDelete={profile} 
+        token={props.sessionToken} 
+        logoutUser={clickLogout} 
+        handleClose={handleCloseForDeleteAccount} 
+        setSnackBarMsg={setSnackBarMsg}
+        setSnackBarSeverity={setSnackBarSeverity} 
+        setShowSnackBar={setShowSnackBar}
+      />
       <div className={classes.toolbarMargin} />
       {checkForToken()}
     </React.Fragment>

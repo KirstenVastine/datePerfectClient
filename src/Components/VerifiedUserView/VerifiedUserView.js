@@ -3,6 +3,7 @@ import Chip from "@material-ui/core/Chip";
 import ViewMatchProfile from "./../../Components/Matches/ViewMatchProfile";
 import { Link } from "react-router-dom";
 
+
 function VerifiedUserView(props) {
 
   React.useEffect(()=>{

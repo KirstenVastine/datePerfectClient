@@ -39,16 +39,14 @@ export default function UpdateProfile(props) {
   const [hobby1, setHobby1] = useState('');
   const [hobby2, setHobby2] = useState('');
   const [hobby3, setHobby3] = useState('');
-  
-  //unnecessary, remove hobbies, setHobbies
-  const [hobbies, setHobbies] = useState('');
 
   React.useEffect(()=>{
+    //using the '?' helps prevent react message "cannot find item of undefined which happens when you do a dot on an empty object"
     setFirstName(profileToUpdate?.firstName);
     setLastName(profileToUpdate?.lastName);
     setLocation(profileToUpdate?.location);
-    setInterestedIn(profileToUpdate?.interestedIn);
-    setGender(profileToUpdate?.gender);
+    // setInterestedIn(profileToUpdate?.interestedIn);
+    // setGender(profileToUpdate?.gender);
     setdateType(profileToUpdate?.dateType);
     setCuisine(profileToUpdate?.cuisine);
     setPicUrl(profileToUpdate?.picUrl);

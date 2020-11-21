@@ -67,27 +67,35 @@
   margin-bottom: auto;
   margin-left: 10px;
   margin-right: 10px;
-  padding: 40px 80px;
+  padding: 20px 60px;
   background-color: black;
+  position: relative;
 }
 
-/* .topborder {
-  box-shadow: 2px 2px 2px black;
-  border: 15px solid blue;
-} */
+.topborder {
+  /* box-shadow: 2px 2px 2px black;
+  border: 15px solid blue; */
+  /* display: block;
+  width: 60vw; */
+}
 
 .imageInnerDiv {
   display: flex;
   width: auto;
   margin: auto;
   padding: 10px 10px;
-  background-color: rgb(229, 233, 229);
+  background-color: rgb(10, 10, 10);
   position: relative;
-  top: 50px;
-  
-
+  /* top: 20px; */
+  border-radius: 50%;
 }
 
+.editIcon{
+  position: absolute !important;
+  top: 10px;
+  right: 10px;
+  z-index: 10;
+}
 
 
 

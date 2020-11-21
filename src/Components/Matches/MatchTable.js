@@ -232,14 +232,14 @@ console.log(profile)
       </div>
      
           <List className={classes.list}>
-            {profile.map(({id, firstName, lastName, picURL}) => (
+            {profile.map(({id, firstName, lastName, location, picURL, email}) => (
               <React.Fragment key={id}>
                 <ListItem >
                   <ListItemAvatar>
                     <Avatar alt="Profile Picture" src={picURL} />
                   </ListItemAvatar>
-                  <ListItemText primary={firstName} secondary={lastName} value={firstName}  />
-                  <DatePlan matchName={firstName} username={props.username} profile={profile}  />
+                  <ListItemText primary={firstName +" " + lastName} secondary={location} value={firstName}  />
+                  <DatePlan matchFirstName={firstName} matchLastName={lastName} email={email} picURL={picURL} username={props.username} profile={profile}  />
                 </ListItem>
                 
               </React.Fragment>

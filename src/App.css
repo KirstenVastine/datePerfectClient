@@ -11,6 +11,20 @@
   left:50%;
   transform: translateX(-50%);
 }
+
+.mainDivforProfile{
+  margin-left: auto;
+  margin-right:auto;
+  display:flex;
+  justify-content: flex-end;
+  flex-direction: column;
+  position: absolute;
+  top:15%;
+  left:50%;
+  transform: translateX(-50%);
+}
+
+
 .buttonDiv{
   display: flex;
   flex-direction: column;
@@ -250,6 +264,8 @@
 
 #matchBar{
   background-color: #220A4A;
+  /* display:flex; */
+  /* align-items: flex-start; */
 }
 
 .chip:hover{
@@ -263,4 +279,9 @@
 
 .name{
   transform: translateX(20%);
+}
+
+
+.profileButton{
+  margin-right: 15px !important;
 }

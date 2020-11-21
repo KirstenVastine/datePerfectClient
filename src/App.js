@@ -27,6 +27,7 @@ function App() {
   const [showSnackBar, setShowSnackBar]= React.useState(false);
   const [snackBarMsg, setSnackBarMsg] = React.useState('Processing');
   const [snackBarSeverity, setSnackBarSeverity] = React.useState('info');
+  const [userProfile, setUserProfile]  = React.useState([]);
   
 
   useEffect(() => {
@@ -127,6 +128,7 @@ function App() {
             setSnackBarMsg={setSnackBarMsg}
             setSnackBarSeverity={setSnackBarSeverity} 
             setShowSnackBar={setShowSnackBar}
+            userProfile={userProfile} setUserProfile={setUserProfile}
           />
          </Route>
 
@@ -157,11 +159,11 @@ function App() {
          </Route>
        
         <Route exact path="/user">
-        <VerifiedUserView  username={username} sessionToken={sessionToken}/>
+        <VerifiedUserView  username={username} sessionToken={sessionToken} userProfile={userProfile} setUserProfile={setUserProfile}/>
         </Route>
         
         <Route exact path="/user/match">
-        <MatchTable username={username}  sessionToken={sessionToken}/>
+        <MatchTable username={username}  sessionToken={sessionToken}  userProfile={userProfile}/>
         </Route>
 
         <Route exact path="/createprofile">

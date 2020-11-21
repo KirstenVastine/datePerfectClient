@@ -125,6 +125,7 @@ function DatePlan(props) {
               profile={props.profile}
               picURL={props.picURL}
               matchLastName={props.matchLastName}
+              userProfile={props.userProfile}
             />
           )}
         </DialogContent>

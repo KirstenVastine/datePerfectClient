@@ -7,6 +7,7 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Paper from '@material-ui/core/Paper';
 import Draggable from 'react-draggable';
+import API_URL from '../../environment'
 
 function PaperComponent(props) {
     return (
@@ -27,7 +28,7 @@ function DeleteAccount(props){
     } = props
     console.log(token) 
         const deleteAccount = () =>{
-            fetch(`http://localhost:4000/user/delete`, {
+            fetch(`${API_URL}/user/delete`, {
                 method: 'DELETE',
                 headers: new Headers({
                     'Content-Type': 'application/json',
@@ -54,7 +55,7 @@ function DeleteAccount(props){
         }
         
         const deleteProfile = () =>{
-                fetch(`http://localhost:4000/profile/`,{
+                fetch(`${API_URL}/profile/`,{
                     method: 'DELETE',
                     headers: new Headers({
                         'Content-Type': 'application/json',

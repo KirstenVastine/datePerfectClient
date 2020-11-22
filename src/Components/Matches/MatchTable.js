@@ -19,6 +19,7 @@ import Button from "@material-ui/core/Button";
 import AccountBoxOutlinedIcon from "@material-ui/icons/AccountBoxOutlined";
 import Fab from "@material-ui/core/Fab";
 import ViewMatchProfile from "../Matches/ViewMatchProfile";
+import API_URL from "../../environment";
 
 const messages = [
   {
@@ -183,9 +184,9 @@ export default function ViewMatchTable(props) {
     // let url= {searchToggle ? `http://localhost:4000/profile/all`: null}
     let url;
     if (searchToggle) {
-      url = `http://localhost:4000/profile/all/${searchInput}`;
+      url = `${API_URL}/profile/all/${searchInput}`;
     } else {
-      url = `http://localhost:4000/profile/all${
+      url = `${API_URL}/profile/all${
         p !== undefined ? `?page=${p}` : ""
       }`;
     }

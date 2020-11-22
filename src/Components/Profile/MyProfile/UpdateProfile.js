@@ -14,6 +14,7 @@ import FormControl from '@material-ui/core/FormControlLabel';
 import FormLabel from '@material-ui/core/FormLabel';
 import Upload from '../UploadPhoto'
 import { AirlineSeatReclineExtraOutlined } from '@material-ui/icons';
+import API_URL from "../../../environment"
 
 
 export default function UpdateProfile(props) {
@@ -82,7 +83,7 @@ export default function UpdateProfile(props) {
 
     let reload = false;
 
-    fetch(`http://localhost:4000/profile/${profileToUpdate.id}`, {
+    fetch(`${API_URL}/profile/${profileToUpdate.id}`, {
       method: 'PUT',
       body: JSON.stringify(
         {

@@ -11,6 +11,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import { Route, Link, Redirect } from "react-router-dom";
 import VerifiedUserView from "../VerifiedUserView/VerifiedUserView";
+import API_URL from "../../environment";
 
 
 
@@ -44,7 +45,7 @@ function Signup (props){
 
     const handleSubmit =(event) => {
       event.preventDefault();
-      fetch('http://localhost:4000/user/signup/',{
+      fetch(`${API_URL}/user/signup/`,{
           method: 'POST', 
           body: JSON.stringify({user: {username: props.username, password: props.password}}),
           headers: new Headers({

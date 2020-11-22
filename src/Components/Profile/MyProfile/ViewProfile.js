@@ -109,8 +109,8 @@ export default function ViewProfile(props) {
       </CardActions>
     </Card>
 
-      <UpdateProfile 
-        open={openUpdateProfile} handleClose={handleCloseForUpdateProfile} 
+      <UpdateProfile
+        openUpdateProfile={openUpdateProfile} handleCloseUpdateProfile={handleCloseForUpdateProfile} 
         profileToUpdate={props.userProfile}
         setSnackBarMsg={setSnackBarMsg}
         setSnackBarSeverity={setSnackBarSeverity} 

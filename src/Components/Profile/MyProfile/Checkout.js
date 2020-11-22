@@ -15,6 +15,7 @@ import InterestPref from './InterestPref';
 import Cuisine from './Cuisine';
 import Hobbies from './Hobbies';
 import API_URL from '../../../environment'
+import {Redirect } from "react-router-dom";
 
 
 
@@ -23,7 +24,7 @@ function Copyright() {
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
       <Link color="inherit" href="https://material-ui.com/">
-        Your Website
+        DatePerfect
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -191,6 +192,8 @@ const [picURL, setPicURL] = useState ('')
 const [hobbyOne, setHobbyOne] = useState ('')
 const [hobbyTwo, setHobbyTwo] = useState ('')
 const [hobbyThree, setHobbyThree] = useState ('')
+const[bio, setBio]= useState('');
+const [profileCreate, setProfileCreate] = useState(false)
 
 // const profileData = {
 //     firstName: firstName,
@@ -235,7 +238,8 @@ function getStepContent(step) {
         setPicURL={setPicURL} hobbyOne={hobbyOne} 
         setHobbyOne={setHobbyOne} hobbyTwo={hobbyTwo} 
         setHobbyTwo={setHobbyTwo} hobbyThree={hobbyThree} 
-        setHobbyThree={setHobbyThree}
+        setHobbyThree={setHobbyThree} sessionToken={props.sessionToken}
+        setBio={setBio}
       />);
     default:
       throw new Error('Unknown step');
@@ -306,7 +310,8 @@ const handleFirstPageSubmit = (e) => {
               dateType: dateType, 
               cuisine:cuisine, 
               picURL: picURL, 
-              hobbies: hobbies
+              hobbies: hobbies,
+              bio: bio
             }
           }),
         headers: new Headers({
@@ -317,7 +322,8 @@ const handleFirstPageSubmit = (e) => {
     .then((res) => console.log(res))
     .then((firstPageData) => {
         console.log(firstPageData);
-        window.open('/profile');
+        setProfileCreate(true);
+        // window.open('/profile');
         //find another function for above
         props.setSnackBarMsg('Profile Created Successfully');
         props.setSnackBarSeverity('success'); 
@@ -325,6 +331,12 @@ const handleFirstPageSubmit = (e) => {
         console.log('got to view profile now!');
     })
     .catch(err => console.log(err))
+}
+
+const checkForProfile= () =>{
+  if(profileCreate){
+    return ( <Redirect to= "/user"/>)
+  }return(console.log('no luck'))
 }
 
   const handleNext = () => {
@@ -404,6 +416,8 @@ const handleFirstPageSubmit = (e) => {
         <Copyright />
       </main>
       {/* </form> */}
+      {checkForProfile()}
     </React.Fragment>
+
   );
 }

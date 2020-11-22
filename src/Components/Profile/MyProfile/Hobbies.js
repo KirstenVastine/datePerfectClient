@@ -170,7 +170,7 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
-import UploadPhoto from '../UploadPhoto';
+
 
 import Checkout from './Checkout';
 
@@ -206,22 +206,28 @@ export default function Hobbies(props) {
   //   console.log(props.hobbyThree);
   // }, [props.hobbyThree]);
 
+
   return (
 
    <React.Fragment>
     {/* // <form className={classes.root} noValidate autoComplete="off"> */}
     <div>
-      <UploadPhoto 
-      type="submit"
-      fullWidth
-      variant="contained"
-      color="primary"
-      className={classes.submit}
       
-      />
     <Typography variant="h6" gutterBottom>
          Share a little about yourself and why you are here.
        </Typography>
+       <TextField
+       id="filled-multiline-static"
+       name="bio"
+       label="Bio"
+       multiline
+       rows={4}
+       variant="filled"
+       fullWidth
+       defaultValue=" "
+       onChange={e => {props.setBio(e.target.value)}}
+     />
+
       </div>
     <div>
     <Typography variant="h6" gutterBottom>

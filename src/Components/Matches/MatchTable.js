@@ -18,6 +18,7 @@ import DatePlan from "./DatePlan/DatePlan";
 import Button from "@material-ui/core/Button";
 import AccountBoxOutlinedIcon from "@material-ui/icons/AccountBoxOutlined";
 import Fab from "@material-ui/core/Fab";
+import ViewMatchProfile from "../Matches/ViewMatchProfile"
 
 const messages = [
   {
@@ -135,7 +136,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ViewMatchProfile(props) {
+export default function ViewMatchTable(props) {
   const classes = useStyles();
   const [profile, setProfile] = useState([]);
   const [pageNumber, setPageNumber] = useState(0);
@@ -173,7 +174,7 @@ export default function ViewMatchProfile(props) {
   // } else {
   //   previousBtn.style.display = "block";
   // }
-
+  
   const fetchProfiles = (p) => {
     console.log(props.sessionToken);
     console.log(p);
@@ -263,7 +264,7 @@ export default function ViewMatchProfile(props) {
 
           <List className={classes.list}>
             {profile.map(
-              ({ id, firstName, lastName, location, picURL, email }) => (
+              ({ id, firstName, lastName, location, picURL, email, bio, hobbies }) => (
                 <React.Fragment key={id}>
                   <ListItem>
                     <ListItemAvatar>
@@ -274,14 +275,18 @@ export default function ViewMatchProfile(props) {
                       secondary={location}
                       value={firstName}
                     />
-                    <Fab
-                      className="profileButton"
-                      size="small"
-                      color= "gray"
-                      aria-label="add"
-                    >
-                      <AccountBoxOutlinedIcon />
-                    </Fab>
+                    <ViewMatchProfile  matchFirstName={firstName}
+                    matchLastName={lastName}
+                    email={email}
+                    picURL={picURL}
+                    username={props.username}
+                    profile={profile}
+                    userProfile={props.userProfile}
+                    location={location}
+                    bio={bio}
+                    hobbies={hobbies}
+                    />
+                   
                     <DatePlan
                       matchFirstName={firstName}
                       matchLastName={lastName}

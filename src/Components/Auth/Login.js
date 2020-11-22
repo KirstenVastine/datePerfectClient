@@ -60,6 +60,7 @@ function Login (props){
                 // setSnackBarMsg('Profile update failed!!!');
                 // setSnackBarSeverity('error');
              }
+             return response.json();
             }
   
         ).then((json)=>{

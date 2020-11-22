@@ -8,6 +8,10 @@ import MuiDialogActions from '@material-ui/core/DialogActions';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import Typography from '@material-ui/core/Typography';
+import AccountBoxOutlinedIcon from "@material-ui/icons/AccountBoxOutlined";
+import Fab from "@material-ui/core/Fab";
+import ViewProfile from "../Profile/MyProfile/ViewProfile"
+import Avatar from "@material-ui/core/Avatar"
 
 const styles = (theme) => ({
   root: {
@@ -49,7 +53,7 @@ const DialogActions = withStyles((theme) => ({
   },
 }))(MuiDialogActions);
 
-export default function CustomizedDialogs() {
+ function ViewMatchProfile(props) {
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -61,34 +65,55 @@ export default function CustomizedDialogs() {
 
   return (
     <div>
-      <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-        Open dialog
-      </Button>
+    <Fab
+    className="profileButton"
+    size="small"
+    color= "gray"
+    aria-label="add"
+    onClick={handleClickOpen}
+    setOpen={setOpen}
+    open={open}
+  >
+    <AccountBoxOutlinedIcon />
+  </Fab>
+
+
       <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>
-        <DialogTitle id="customized-dialog-title" onClose={handleClose}>
-          Modal title
+        <DialogTitle  color="secondary" id="customized-dialog-title" onClose={handleClose}>
+        Match Profile <i class="far fa-heart smallHeart"></i>
+        
         </DialogTitle>
         <DialogContent dividers>
+        <div className= "profileMatchPic" >
+        <img  src={props.picURL} style={{  height:'180px', width: '180px'}} />
+        <div className= "matchProfileName">
+        <h1 className= "matchTitleView" style={{ color: 'white'}}>{props.matchFirstName}  {props.matchLastName}</h1>
+        <h3 className= "matchTitleView" style={{ color: 'white'}}>{props.location} </h3>
+        </div>
+        
+        </div>
+     
+      
+      
+            <br></br>
           <Typography gutterBottom>
-            Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis
-            in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
+           ABOUT ME:
           </Typography>
           <Typography gutterBottom>
-            Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis
-            lacus vel augue laoreet rutrum faucibus dolor auctor.
+            {props.bio}
           </Typography>
           <Typography gutterBottom>
-            Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel
-            scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus
-            auctor fringilla.
+            
           </Typography>
         </DialogContent>
         <DialogActions>
           <Button autoFocus onClick={handleClose} color="primary">
-            Save changes
+            CLOSE
           </Button>
         </DialogActions>
       </Dialog>
     </div>
   );
 }
+
+export default ViewMatchProfile;

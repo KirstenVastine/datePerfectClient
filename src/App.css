@@ -285,3 +285,26 @@
 .profileButton{
   margin-right: 15px !important;
 }
+
+.profileMatchPic{
+display: flex;
+justify-content: flex-start;
+background-color: black;
+}
+
+.matchProfileName{
+  font-family: 'Raleway', sans-serif;
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.matchTitleView{
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  padding-left: 20px;
+  padding-right: 20px
+}

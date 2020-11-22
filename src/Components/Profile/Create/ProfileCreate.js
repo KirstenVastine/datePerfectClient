@@ -3,12 +3,12 @@
 import React from 'react';
 import Checkout from '../MyProfile/Checkout'
 
-function ProfileCreate () {
+function ProfileCreate (props) {
 
     return(
 
         <div>
-            <Checkout />
+            <Checkout sessionToken={props.sessionToken}/>
         </div>
 
     ) 

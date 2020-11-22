@@ -162,7 +162,7 @@
 // }
 
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import List from '@material-ui/core/List';
@@ -171,6 +171,8 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import UploadPhoto from '../UploadPhoto';
+
+import Checkout from './Checkout';
 
 const useStyles = makeStyles((theme) => ({
   listItem: {
@@ -184,13 +186,39 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Hobbies() {
+
+
+
+export default function Hobbies(props) {
+  
   const classes = useStyles();
 
+
+  // useEffect (() => {
+  //   console.log(props.hobbyOne);
+  // }, [props.hobbyOne]);
+
+  // useEffect (() => {
+  //   console.log(props.hobbyTwo);
+  // }, [props.hobbyTwo]);
+
+  // useEffect (() => {
+  //   console.log(props.hobbyThree);
+  // }, [props.hobbyThree]);
+
   return (
-    <form className={classes.root} noValidate autoComplete="off">
+
+   <React.Fragment>
+    {/* // <form className={classes.root} noValidate autoComplete="off"> */}
     <div>
-      <UploadPhoto />
+      <UploadPhoto 
+      type="submit"
+      fullWidth
+      variant="contained"
+      color="primary"
+      className={classes.submit}
+      
+      />
     <Typography variant="h6" gutterBottom>
          Share a little about yourself and why you are here.
        </Typography>
@@ -207,6 +235,8 @@ export default function Hobbies() {
         defaultValue="Hobby 1"
         variant="outlined"
         size="small"
+        value={props.hobbyOne}
+        onChange={(e) => props.setHobbyOne(e.target.value)}
       />
       <br />
       <br />
@@ -216,6 +246,8 @@ export default function Hobbies() {
         defaultValue="Hobby 2"
         variant="outlined"
         size="small"
+        value={props.hobbyTwo}
+        onChange={(e) => props.setHobbyTwo(e.target.value)}
       />
       <br />
       <br />
@@ -225,6 +257,8 @@ export default function Hobbies() {
         defaultValue="Hobby 3"
         variant="outlined"
         size="small"
+        value={props.hobbyThree}
+        onChange={(e) => props.setHobbyThree(e.target.value)}
       />
       {/* <TextField
         label="Size"
@@ -233,7 +267,8 @@ export default function Hobbies() {
         variant="outlined"
       /> */}
     </div>
-   </form>
+    </React.Fragment>
+  
   );
 }
 

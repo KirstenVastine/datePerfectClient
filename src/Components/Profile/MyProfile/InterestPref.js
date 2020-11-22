@@ -23,20 +23,18 @@ import FormLabel from '@material-ui/core/FormLabel';
 
 function InterestPref (props) {
 
-    const [firstName, setFirstName] = useState('');
-    const [lastName, setLastName] = useState('');
-    const [favoriteDate, setFavoriteDate] = useState('');
 
-    const [value, setValue] = React.useState('');
+  const {interestPref, setInterestPref} = props;
+
   const handleChange = (event) => {
-    setValue(event.target.value)
+    setInterestPref(event.target.value)
   };
 
     return (
         <React.Fragment>
           <Typography variant="h6" gutterBottom>
             {/* Shipping address */}
-            What's your name?
+            Contact Info
           </Typography>
           <Grid container spacing={3}>
             <Grid item xs={12} sm={6}>
@@ -47,6 +45,8 @@ function InterestPref (props) {
                 label="First name"
                 fullWidth
                 autoComplete="given-name"
+                value={props.firstName}
+                onChange={(e) => props.setFirstName(e.target.value)}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -57,27 +57,53 @@ function InterestPref (props) {
                 label="Last name"
                 fullWidth
                 autoComplete="family-name"
+                value={props.lastName}
+                onChange={(e) => props.setLastName(e.target.value)}
+              />
+              </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                required
+                id="Email"
+                name="Email"
+                label="Email"
+                fullWidth
+                autoComplete="Email"
+                value={props.email}
+                onChange={(e) => props.setEmail(e.target.value)}
               />
             </Grid>
+            <Grid item xs={12} sm={6}>
+          <TextField
+            required
+            id="City, State"
+            name="City, State"
+            label="City, State"
+            fullWidth
+            autoComplete="City, State"
+            value={props.location}
+            onChange={(e) => props.setLocation(e.target.value)}
+          />
+        </Grid>
             <Grid item xs={12}>
           <br />
           <br />
         <Typography variant="h6" gutterBottom>
-          Favorite type of date night.
+          Favorite Type of Date Night
       </Typography>
       </Grid>
 
+  
+    
       <FormControl component="fieldset">
-      <FormLabel component="legend">Favorite type of date night:</FormLabel>
-      <br />
-      <RadioGroup aria-label="dateNight" name="dateNight" value={value} onChange={handleChange}>
+      <FormLabel component="legend"></FormLabel>
+      <RadioGroup aria-label="dateNight" name="dateNight" value={interestPref} onChange={handleChange}>
         <FormControlLabel value="Quirky and Fun" control={<Radio />} label="Quirky and Fun" />
-        <FormControlLabel value="male" control={<Radio />} label="Outdoorsy and Adventurous" />
-        <FormControlLabel value="other" control={<Radio />} label="Romantic and Thoughtful" />
+        <FormControlLabel value="Outdoorsy and Adventurous" control={<Radio />} label="Outdoorsy and Adventurous" />
+        <FormControlLabel value="Romantic and Thoughtful" control={<Radio />} label="Romantic and Thoughtful" />
         {/* <FormControlLabel value="disabled" disabled control={<Radio />} label="(Disabled option)" /> */}
       </RadioGroup>
     </FormControl>
-
 
         {/* <Grid item xs={12}>
           <FormControlLabel

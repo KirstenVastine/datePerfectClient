@@ -317,6 +317,10 @@ const handleFirstPageSubmit = (e) => {
     .then((firstPageData) => {
         console.log(firstPageData);
         window.open('/profile');
+        //find another function for above
+        props.setSnackBarMsg('Profile Created Successfully');
+        props.setSnackBarSeverity('success'); 
+        props.setShowSnackBar(true);
         console.log('got to view profile now!');
     })
     .catch(err => console.log(err))

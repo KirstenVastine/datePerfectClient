@@ -8,7 +8,11 @@ function ProfileCreate (props) {
     return(
 
         <div>
-            <Checkout sessionToken={props.sessionToken}/>
+            <Checkout sessionToken={props.sessionToken}
+                setSnackBarMsg={props.setSnackBarMsg}
+                setSnackBarSeverity={props.setSnackBarSeverity} 
+                setShowSnackBar={props.setShowSnackBar}
+            />
         </div>
 
     ) 

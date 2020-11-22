@@ -14,7 +14,7 @@ import DatePlanHome from "./Home_DatePlan";
 import DatePlanActivity from "./Activity_DatePlan";
 import DatePlanGift from "./Gift_DatePlan";
 import DatePlanMeal from "./Meal_DatePlan";
-import ListItem from "@material-ui/core/ListItem"
+import ListItem from "@material-ui/core/ListItem";
 
 const styles = (theme) => ({
   root: {
@@ -83,7 +83,6 @@ function DatePlan(props) {
 
   const handleClickOpen = (e) => {
     setOpen(true);
-    
   };
   const handleClose = () => {
     setOpen(false);
@@ -120,11 +119,20 @@ function DatePlan(props) {
           ) : toggle === "gift" ? (
             <DatePlanGift />
           ) : (
-            <DatePlanHome matchName={props.matchName} username={props.username} profile={props.profile} />
+            <DatePlanHome
+              matchFirstName={props.matchFirstName}
+              username={props.username}
+              profile={props.profile}
+              picURL={props.picURL}
+              matchLastName={props.matchLastName}
+              userProfile={props.userProfile}
+            />
           )}
         </DialogContent>
         <DialogActions>
-          <Button autoFocus onClick={handleToggleHome} color="primary"><i class="fas fa-user-check"></i></Button>
+          <Button autoFocus onClick={handleToggleHome} color="primary">
+            <i class="fas fa-user-check"></i>
+          </Button>
           <Button autoFocus onClick={handleToggleMeal} color="primary">
             <i class="fas fa-utensils"></i>
           </Button>
@@ -135,12 +143,15 @@ function DatePlan(props) {
             <i class="fas fa-gift"></i>
           </Button>
         </DialogActions>
-        <DialogActions className="connect" >
-          <Button id="connect" autoFocus >
-          <i class="fas fa-envelope"></i>
-        
-            Connect
-          </Button>
+        <DialogActions className="connect">
+            <a href={`mailto:${props.email}`} className="connect1" target="_blank">
+              <Button id="connect" autoFocus>
+              <i class="fas fa-envelope"></i>
+                Connect
+              </Button>
+            </a>
+            
+ 
         </DialogActions>
       </Dialog>
     </div>

@@ -16,6 +16,7 @@ import Cuisine from './Cuisine';
 import Hobbies from './Hobbies';
 
 
+
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
@@ -142,97 +143,191 @@ const useStyles = makeStyles((theme) => ({
 
 const steps = ['Lets make a start', 'Food Preferences', 'Activities'];
 
+// function getStepContent(step) {
+//   switch (step) {
+//     case 0:
+//       return <InterestPref />;
+//     case 1:
+//       return <Cuisine/>;
+//     case 2:
+//       return <Hobbies hobbyOne={hobbyOne}/>;
+//     // case 3:
+//     //   return <Checkout />;
+//     default:
+//       throw new Error('Unknown step');
+//   }
+// }
+
+export default function Checkout(props) {
+  const classes = useStyles();
+  const [activeStep, setActiveStep] = React.useState(0);
+  
+
+  //First page variables
+// const [interestPref, setInterestPref] = useState ('')
+const [firstName, setFirstName] = useState ('')
+const [lastName, setLastName] = useState ('')
+const [email, setEmail] = useState ('')
+const [location, setLocation] = useState ('')
+const [dateType, setDateType] = useState ('')
+// const [quirky, setQuirky] = useState ('')
+// const [adventurous, setAdventurous] = useState ('')
+// const [romantic, setRomantic] = useState ('')
+
+//Second page variables for cuisine options
+const [cuisine, setCuisine] = useState ('')
+// const [steakhouse, setSteakhouse] = useState (false)
+// const [barFood, setBarFood] = useState ('')
+// const [mexican, setMexican] = useState ('')
+// const [italian, setItalian] = useStacte ('')
+// const [chinese, setChinese] = useState ('')
+// const [mediterranean, setMediterranean] = useState ('')
+// const [indian, setIndian] = useState ('')
+
+//Third page variables for Hobbies.
+const [hobbies, setHobbies] = useState ('')
+const [picURL, setPicURL] = useState ('')
+const [hobbyOne, setHobbyOne] = useState ('')
+const [hobbyTwo, setHobbyTwo] = useState ('')
+const [hobbyThree, setHobbyThree] = useState ('')
+
+// const profileData = {
+//     firstName: firstName,
+//     lastName: lastName,
+//     email: email,
+//     location: location,
+//     // quirky: quirky,
+//     // adventurous: adventurous,
+//     // romantic: romantic,
+//     dateType: dateType,
+//     // steakhouse: steakhouse,
+//     // barFood: barFood,
+//     // mexican: mexican,
+//     // italian: italian,
+//     // chinese: chinese,
+//     // mediterranean: mediterranean,
+//     // indian: indian,
+//     picURL: picURL,
+//     hobbyOne: hobbyOne,
+//     hobbyTwo: hobbyTwo,
+//     hobbyThree: hobbyThree
+// }
+
 function getStepContent(step) {
   switch (step) {
     case 0:
-      return <InterestPref  />;
+      return (
+      <InterestPref firstName={firstName} 
+        setFirstName={setFirstName} 
+        lastName={lastName} 
+        setLastName={setLastName} 
+        email={email} setEmail={setEmail} 
+        location={location} 
+        setLocation={setLocation}
+        interestPref={dateType}
+        setInterestPref={setDateType} />);
     case 1:
-      return <Cuisine/>;
+      return <Cuisine cuisine={cuisine} setCuisine={setCuisine}/>;
     case 2:
-      return <Hobbies />;
-    case 3:
-      return <Checkout />;
+      return (
+      <Hobbies picURL={picURL} 
+        setPicURL={setPicURL} hobbyOne={hobbyOne} 
+        setHobbyOne={setHobbyOne} hobbyTwo={hobbyTwo} 
+        setHobbyTwo={setHobbyTwo} hobbyThree={hobbyThree} 
+        setHobbyThree={setHobbyThree}
+      />);
     default:
       throw new Error('Unknown step');
   }
 }
 
-export default function Checkout() {
-  const classes = useStyles();
-  const [activeStep, setActiveStep] = React.useState(0);
+// const translateCuisine = () => {
+//   console.log('cuisine', cuisine);
+//   if(cuisine === "steakhouse") {
+//     setSteakhouse(true)
+//   } else if (cuisine === "barFood") {
+//     setBarFood(true)
+//   } else if (cuisine === "mexican") {
+//     setMexican(true) 
+//   } else if (cuisine === "italian") {
+//     setItalian(true)
+//   } else if (cuisine === "chinese") {
+//     setItalian(true)
+//   } else if (cuisine === "mediterranean") {
+//     setMediterranean(true) 
+//   } else if (cuisine === "indian") {
+//     setIndian(true)
+//   } 
+// }
 
-  //First page variables
-const [firstName, setFirstName] = useState ('')
-const [lastName, setLastName] = useState ('')
-const [quirky, setQuirky] = useState ('')
-const [adventurous, setAdventurous] = useState ('')
-const [romantic, setRomantic] = useState ('')
 
-//Second page variables for cuisine options
-const [steakhouse, setSteakhouse] = useState ('')
-const [barFood, setBarFood] = useState ('')
-const [mexican, setMexican] = useState ('')
-const [italian, setItalian] = useState ('')
-const [chinese, setChinese] = useState ('')
-const [mediterranean, setMediterranean] = useState ('')
-const [indian, setIndian] = useState ('')
-
-//Third page variables for Hobbies.
-const [hobbyOne, setHobbyOne] = useState ('')
-const [hobbyTwo, setHobbyTwo] = useState ('')
-const [hobbyThree, setHobbyThree] = useState ('')
-
-const profileData = {
-    firstName: firstName,
-    lastName: lastName,
-    quirky: quirky,
-    adventurous: adventurous,
-    romantic: romantic,
-    steakhouse: steakhouse,
-    barFood: barFood,
-    mexican: mexican,
-    italian: italian,
-    chinese: chinese,
-    mediterranean: mediterranean,
-    indian: indian,
-    hobbyOne: hobbyOne,
-    hobbyTwo: hobbyTwo,
-    hobbyThree: hobbyThree
-}
 
 const handleFirstPageSubmit = (e) => {
     e.preventDefault();
+    // translateCuisine();
+
+    const addHobby = (hobby) => {
+      if(hobby !== ''){
+        if(hobbies !== ''){
+          setHobbies(hobbies + ', ');
+        }
+        setHobbies(hobbies + hobby);
+      }
+    }
+
+    addHobby(hobbyOne);
+    addHobby(hobbyTwo);
+    addHobby(hobbyThree);
+
+    // const hobbies = '';
+    // const hobbyList = [hobbyOne, hobbyTwo, hobbyThree];
+
+    // for(let hobby of hobbyList){
+    //   if(hobby !== ''){
+    //     if(hobbies !== ''){
+    //       setHobbies(hobbies += ', ');
+    //     }
+    //     hobbies += hobby;
+    //   }
+    // }
+
+   // console.log({profile: {firstName: firstName, lastName: lastName, email: email, location: location, dateType: dateType, steakhouse: steakhouse, barFood: barFood, mexican: mexican, italian: italian, chinese: chinese, mediterranean: mediterranean, indian: indian, picURL: picURL, hobbyOne: hobbyOne, hobbyTwo: hobbyTwo, hobbyThree: hobbyThree}});
     fetch(`http://localhost:4000/profile/`, {
         method: "POST",
-        body: JSON.stringify({firstName: firstName, lastName: lastName, quirky: quirky, adventurous: adventurous, romantic: romantic, steakhouse: steakhouse, barFood: barFood, mexican: mexican, italian: italian, chinese: chinese, mediterranean: mediterranean, indian: indian, hobbyOne: hobbyOne, hobbyTwo: hobbyTwo, hobbyThree: hobbyThree}),
+
+        body: JSON.stringify(
+          {
+            profile: {
+              firstName: firstName, 
+              lastName: lastName, 
+              email: email, 
+              location: location, 
+              dateType: dateType, 
+              cuisine:cuisine, 
+              picURL: picURL, 
+              hobbies: hobbies
+            }
+          }),
         headers: new Headers({
             'Content-Type': 'application/json',
-            // 'Authorization': props.token
+            'Authorization': props.sessionToken
         })
-    }) .then((res) => console.log(res))
+    }) 
+    .then((res) => console.log(res))
     .then((firstPageData) => {
         console.log(firstPageData);
-        setFirstName('');
-        setLastName('');
-        setQuirky('');
-        setAdventurous('');
-        setRomantic('');
-        setSteakhouse('');
-        setBarFood('');
-        setMexican('');
-        setItalian('');
-        setChinese('');
-        setMediterranean('');
-        setIndian('');
-        setHobbyOne('');
-        setHobbyTwo('');
-        setHobbyThree('');
-        profileData();
+        window.open('/profile');
+        //find another function for above
+        props.setSnackBarMsg('Profile Created Successfully');
+        props.setSnackBarSeverity('success'); 
+        props.setShowSnackBar(true);
+        console.log('got to view profile now!');
     })
     .catch(err => console.log(err))
 }
 
   const handleNext = () => {
+    // translateCuisine();
     setActiveStep(activeStep + 1);
   };
 
@@ -251,13 +346,10 @@ const handleFirstPageSubmit = (e) => {
 
   return (
     <React.Fragment>
+      {/* <form
+      onSubmit={handleFirstPageSubmit} > */}
       <CssBaseline />
       <AppBar position="absolute" color="default" className={classes.appBar}>
-        <Toolbar>
-          <Typography variant="h6" color="inherit" noWrap>
-            Company name
-          </Typography>
-        </Toolbar>
       </AppBar>
       <main className={classes.layout}>
         <Paper className={classes.paper}>
@@ -297,10 +389,11 @@ const handleFirstPageSubmit = (e) => {
                   <Button
                     variant="contained"
                     color="primary"
-                    onClick={handleNext}
+                    onClick={(e) => {activeStep === steps.length -1 ? handleFirstPageSubmit(e) : handleNext()}}
+                    // onClick={handleNext}
                     className={classes.button}
                   >
-                    {activeStep === steps.length - 1 ? 'Submit' : 'Next'}
+                   {activeStep === steps.length - 1 ? 'Submit' : 'Next'}
                   </Button>
                 </div>
               </React.Fragment>
@@ -309,6 +402,7 @@ const handleFirstPageSubmit = (e) => {
         </Paper>
         <Copyright />
       </main>
+      {/* </form> */}
     </React.Fragment>
   );
 }

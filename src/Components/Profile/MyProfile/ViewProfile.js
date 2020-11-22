@@ -83,18 +83,19 @@ export default function ViewProfile(props) {
       </div>
         
         <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
+          <h1 className= "viewProfileText" gutterBottom variant="h4" component="h2">
            {props.userProfile?.firstName + '  ' + props.userProfile?.lastName}
-          </Typography>
-          <Typography variant="h5" component="h4">
-          <p>{props.userProfile?.location}</p>
-          </Typography>
+          </h1>
+          <h4 className="viewProfileText">{props.userProfile?.location}</h4>
+          <br></br>
+      
           <Typography variant="body2" color="textPrimary" component="p">
-           {props.userProfile?.bio}
+           ABOUT ME: <br></br> {props.userProfile?.bio} 
             </Typography>
 
             <Typography variant="body2" color="textSeconday" component="h3">
-            <h5> HOBBIES </h5>
+            {props.userProfile.hobbies !== '' ? <h5> HOBBIES </h5>: ''}
+            
             
           </Typography>
           <Typography variant="body2" color="textSeconday" component="h2">

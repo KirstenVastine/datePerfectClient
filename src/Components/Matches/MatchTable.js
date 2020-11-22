@@ -18,7 +18,7 @@ import DatePlan from "./DatePlan/DatePlan";
 import Button from "@material-ui/core/Button";
 import AccountBoxOutlinedIcon from "@material-ui/icons/AccountBoxOutlined";
 import Fab from "@material-ui/core/Fab";
-import ViewMatchProfile from "../Matches/ViewMatchProfile"
+import ViewMatchProfile from "../Matches/ViewMatchProfile";
 
 const messages = [
   {
@@ -138,6 +138,8 @@ const useStyles = makeStyles((theme) => ({
 
 export default function ViewMatchTable(props) {
   const classes = useStyles();
+  const [searchToggle, setSearchToggle] = useState(false);
+  const [searchInput, setSearchInput] = useState("");
   const [profile, setProfile] = useState([]);
   const [pageNumber, setPageNumber] = useState(0);
   // const[myName, setMyName] =useState('name')
@@ -174,30 +176,41 @@ export default function ViewMatchTable(props) {
   // } else {
   //   previousBtn.style.display = "block";
   // }
-  
+
   const fetchProfiles = (p) => {
     console.log(props.sessionToken);
     console.log(p);
-    fetch(
-      `http://localhost:4000/profile/all${p !== undefined ? `?page=${p}` : ""}`,
-      {
-        method: "GET",
-        headers: new Headers({
-          "Content-Type": "application/json",
-          Authorization: props.sessionToken,
-        }),
-      }
-    )
+    // let url= {searchToggle ? `http://localhost:4000/profile/all`: null}
+    let url;
+    if (searchToggle) {
+      url = `http://localhost:4000/profile/all/${searchInput}`;
+    } else {
+      url = `http://localhost:4000/profile/all${
+        p !== undefined ? `?page=${p}` : ""
+      }`;
+    }
+    console.log(url);
+    fetch(url, {
+      method: "GET",
+      headers: new Headers({
+        "Content-Type": "application/json",
+        Authorization: props.sessionToken,
+      }),
+    })
       .then((res) => res.json())
       .then((json) => {
         console.log("matchtable", json);
-        setProfile(json); //taking information from the server and setting it to our state
+        if (json !== undefined) {
+          setProfile(json); //taking information from the server and setting it to our state
+        } else {
+          setProfile([]);
+        }
       });
   };
 
   useEffect(() => {
     fetchProfiles(0);
-  }, []);
+  }, [searchInput]);
 
   console.log(profile);
 
@@ -230,6 +243,21 @@ export default function ViewMatchTable(props) {
                       input: classes.inputInput,
                     }}
                     inputProps={{ "aria-label": "search" }}
+                    onClick={()=> {
+                      setSearchToggle(true);
+                  
+                    }}
+                    onChange={(e) => {
+                      setSearchToggle(true)
+                      setSearchInput(e.target.value);
+                      if(e.target.value.length <1){
+                        setSearchToggle(false)
+
+                      }
+                      
+      
+                    }}
+                    value={searchInput}
                   />
                 </div>
                 <div className="pageButton">
@@ -263,8 +291,17 @@ export default function ViewMatchTable(props) {
           </div>
 
           <List className={classes.list}>
-            {profile.map(
-              ({ id, firstName, lastName, location, picURL, email, bio, hobbies }) => (
+            {profile?.map(
+              ({
+                id,
+                firstName,
+                lastName,
+                location,
+                picURL,
+                email,
+                bio,
+                hobbies,
+              }) => (
                 <React.Fragment key={id}>
                   <ListItem>
                     <ListItemAvatar>
@@ -275,18 +312,19 @@ export default function ViewMatchTable(props) {
                       secondary={location}
                       value={firstName}
                     />
-                    <ViewMatchProfile  matchFirstName={firstName}
-                    matchLastName={lastName}
-                    email={email}
-                    picURL={picURL}
-                    username={props.username}
-                    profile={profile}
-                    userProfile={props.userProfile}
-                    location={location}
-                    bio={bio}
-                    hobbies={hobbies}
+                    <ViewMatchProfile
+                      matchFirstName={firstName}
+                      matchLastName={lastName}
+                      email={email}
+                      picURL={picURL}
+                      username={props.username}
+                      profile={profile}
+                      userProfile={props.userProfile}
+                      location={location}
+                      bio={bio}
+                      hobbies={hobbies}
                     />
-                   
+
                     <DatePlan
                       matchFirstName={firstName}
                       matchLastName={lastName}

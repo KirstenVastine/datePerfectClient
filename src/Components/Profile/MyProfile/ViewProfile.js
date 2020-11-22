@@ -26,19 +26,15 @@ export default function ViewProfile(props) {
     setSnackBarMsg
   } = props;
 
-  const [open, setOpen] = React.useState(false);
-  // const [userProfile, setUserProfile]  = React.useState([]);
-  // const [showSnackBar, setShowSnackBar]= React.useState(false);
-  // const [snackBarMsg, setSnackBarMsg] = React.useState('Processing');
-  // const [snackBarSeverity, setSnackBarSeverity] = React.useState('info');
+  const [openUpdateProfile, setOpenUpdateProfile] = React.useState(false);
   const [reload, setReload] = React.useState(false);
 
   const handleClickOpen = () => {
-    setOpen(true);
+    setOpenUpdateProfile(true);
   };
 
-  const handleClose = (reload=false) => {
-    setOpen(false);
+  const handleCloseForUpdateProfile = (reload=false) => {
+    setOpenUpdateProfile(false);
     if(reload)
       setReload(true);
   };
@@ -81,9 +77,7 @@ export default function ViewProfile(props) {
                
             <CardMedia />
                 <img src={props.userProfile.picURL} style={{ height: "200px" }} />
-                {console.log(props.userProfile.picURL)}
-                
-                  
+                {console.log(props.userProfile.picURL)} 
           </div>
         </div>
       </div>
@@ -115,12 +109,12 @@ export default function ViewProfile(props) {
     </Card>
 
       <UpdateProfile 
-        open={open} handleClose={handleClose} 
+        open={openUpdateProfile} handleClose={handleCloseForUpdateProfile} 
         profileToUpdate={props.userProfile}
         setSnackBarMsg={setSnackBarMsg}
         setSnackBarSeverity={setSnackBarSeverity} 
         setShowSnackBar={setShowSnackBar}
-        setReload={setReload}
+        setReload={setReload} ViewProfile={ViewProfile}
         />
     </div>
   );

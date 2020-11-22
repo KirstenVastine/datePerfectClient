@@ -18,9 +18,9 @@ import { AirlineSeatReclineExtraOutlined } from '@material-ui/icons';
 
 export default function UpdateProfile(props) {
   const {
-    open, handleClose,
+    openUpdateProfile, handleCloseUpdateProfile,
     profileToUpdate, setSnackBarMsg,
-    setSnackBarSeverity,setShowSnackBar
+    setSnackBarSeverity,setShowSnackBar, ViewProfile
   } = props;
 
   const token = localStorage.getItem("token");
@@ -41,7 +41,7 @@ export default function UpdateProfile(props) {
   const [hobby3, setHobby3] = useState('');
 
   React.useEffect(()=>{
-    //using the '?' helps prevent react message "cannot find item of undefined which happens when you do a dot on an empty object"
+    //using the '?' helps prevent react message "cannot read property of undefined which happens when you do a dot on an empty object"
     setFirstName(profileToUpdate?.firstName);
     setLastName(profileToUpdate?.lastName);
     setLocation(profileToUpdate?.location);
@@ -116,7 +116,8 @@ export default function UpdateProfile(props) {
         setSnackBarMsg('Profile update failed!!!');
         setSnackBarSeverity('error');
       }
-      handleClose(reload);
+      handleCloseUpdateProfile(reload);
+      ViewProfile();
       setShowSnackBar(true);
       console.log(result);
     })
@@ -126,8 +127,8 @@ export default function UpdateProfile(props) {
   return (
     <div className="mainDiv">
         <Dialog 
-          open={open} 
-          onClose={handleClose} 
+          open={openUpdateProfile} 
+          onClose={handleCloseUpdateProfile} 
           aria-labelledby="form-dialog-title"
         >
           <DialogTitle id="form-dialog-title">
@@ -247,7 +248,8 @@ export default function UpdateProfile(props) {
               <FormControlLabel value="male" control={<Radio />} label="Male" />
             </RadioGroup>
           </FormControl> */}
-            <Grid container spacing={3}>
+            
+            {/* </Grid><Grid container spacing={3}>
               <Grid item xs={12} sm={12}>
                 <TextField
                   autoFocus
@@ -259,8 +261,7 @@ export default function UpdateProfile(props) {
                   value={cuisine}
                   onChange={e =>setCuisine(e.target.value)}
                 />
-              </Grid>
-            </Grid>
+              </Grid> */}
 
             <DialogTitle id="form-dialog-title"
               className="hobbiesText" 
@@ -305,7 +306,7 @@ export default function UpdateProfile(props) {
             </Grid>
           </DialogContent>
           <DialogActions>
-            <Button onClick={handleClose} color="primary">
+            <Button onClick={handleCloseUpdateProfile} color="primary">
               Cancel
             </Button>
             <Button onClick={e => profileEdit(e)} color="primary">

@@ -167,7 +167,11 @@ function App() {
         </Route>
 
         <Route exact path="/createprofile">
-        <ProfileCreate username={username}  sessionToken={sessionToken}/>
+        <ProfileCreate username={username}  sessionToken={sessionToken}
+          setSnackBarMsg={setSnackBarMsg}
+          setSnackBarSeverity={setSnackBarSeverity} 
+          setShowSnackBar={setShowSnackBar}
+        />
         </Route>
       </BrowserRouter>
     </ThemeProvider>

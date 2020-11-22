@@ -61,7 +61,8 @@ function DeleteAccount(props){
                         'Authorization': token
                     })
                 })
-                .then (()=> deleteAccount());
+                .then (()=> deleteAccount())
+                .catch  (err => console.log(err))
         }   
 
       

@@ -2,13 +2,13 @@ import React from "react";
 import Chip from "@material-ui/core/Chip";
 import ViewMatchProfile from "./../../Components/Matches/ViewMatchProfile";
 import { Link } from "react-router-dom";
-
+import API_URL from '../../environment'
 
 function VerifiedUserView(props) {
 
   React.useEffect(()=>{
     const getProfile = () => {
-      fetch(`http://localhost:4000/profile/`, 
+      fetch(`${API_URL}/profile/`, 
       {
         method: "GET",
         headers: new Headers ({

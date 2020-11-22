@@ -9,6 +9,7 @@ import Typography from '@material-ui/core/Typography';
 import EditIcon from '@material-ui/icons/Edit';
 import Fab from '@material-ui/core/Fab';
 import UpdateProfile from './UpdateProfile';
+import API_URL from '../../../environment'
 
 const useStyles = makeStyles({
   root: {
@@ -43,7 +44,7 @@ export default function ViewProfile(props) {
 
   React.useEffect(()=>{
     const getProfile = () => {
-      fetch(`http://localhost:4000/profile/`, 
+      fetch(`${API_URL}/profile/`, 
       {
         method: "GET",
         headers: new Headers ({

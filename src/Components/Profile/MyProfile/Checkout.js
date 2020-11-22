@@ -14,6 +14,7 @@ import Typography from '@material-ui/core/Typography';
 import InterestPref from './InterestPref';
 import Cuisine from './Cuisine';
 import Hobbies from './Hobbies';
+import API_URL from '../../../environment'
 
 
 
@@ -292,7 +293,7 @@ const handleFirstPageSubmit = (e) => {
     // }
 
    // console.log({profile: {firstName: firstName, lastName: lastName, email: email, location: location, dateType: dateType, steakhouse: steakhouse, barFood: barFood, mexican: mexican, italian: italian, chinese: chinese, mediterranean: mediterranean, indian: indian, picURL: picURL, hobbyOne: hobbyOne, hobbyTwo: hobbyTwo, hobbyThree: hobbyThree}});
-    fetch(`http://localhost:4000/profile/`, {
+    fetch(`${API_URL}/profile/`, {
         method: "POST",
 
         body: JSON.stringify(

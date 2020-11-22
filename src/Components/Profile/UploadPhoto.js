@@ -1,5 +1,6 @@
 import { getThemeProps } from "@material-ui/styles";
 import React, { useState } from "react";
+import API_URL from '../../environment'
 
 const CLOUD_URL = "https://api.cloudinary.com/v1_1/dpbvzjhck/image/upload";
 
@@ -30,7 +31,7 @@ const Upload = (props) => {
     // if(!previewSource) return;
     // uploadImage(previewSource);
 
-    const uploadImage = await fetch("http://localhost:4000/profile/cloudsign", {
+    const uploadImage = await fetch(`${API_URL}/profile/cloudsign`, {
       method: "GET",
       headers: {
         Authorization: props.sessionToken,
@@ -59,7 +60,7 @@ const Upload = (props) => {
     console.log(fileUrl);
 
     const final = await (
-      await fetch("http://localhost:4000/profile/imageset", {
+      await fetch(`${API_URL}/profile/imageset`, {
         method: "PUT",
         headers: {
           Authorization: props.sessionToken,

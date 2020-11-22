@@ -308,3 +308,10 @@ background-color: black;
   padding-left: 20px;
   padding-right: 20px
 }
+
+.viewProfileText{
+  font-family: 'Raleway', sans-serif;
+  text-align: center;
+  margin:0 !important;
+
+}

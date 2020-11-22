@@ -51,7 +51,16 @@ function Login (props){
                 'Content-Type': 'application/json'
             })
         }).then(
-            (response) => response.json()
+            (response) => {
+             if (response.status===200){
+               console.log("Login was successful");
+             }
+             else {
+               console.log('Login in failed');
+                // setSnackBarMsg('Profile update failed!!!');
+                // setSnackBarSeverity('error');
+             }
+            }
   
         ).then((json)=>{
             props.updateToken(json.sessionToken)

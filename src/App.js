@@ -16,16 +16,18 @@ import DatePlanActivity from "./Components/Matches/DatePlan/Activity_DatePlan";
 import ViewProfile from "./Components/Profile/MyProfile/ViewProfile";
 import Upload from "./Components/Profile/UploadPhoto";
 import ProfileCreate from "./Components/Profile/Create/ProfileCreate"
-
+import DynamicSnackBar from './Components/Profile/MyProfile/DynamicSnackBar'; 
 
 const button = "four";
-
 
 function App() {
   const [sessionToken, setSessionToken] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-
+  const [showSnackBar, setShowSnackBar]= React.useState(false);
+  const [snackBarMsg, setSnackBarMsg] = React.useState('Processing');
+  const [snackBarSeverity, setSnackBarSeverity] = React.useState('info');
+  const [userProfile, setUserProfile]  = React.useState([]);
   
 
   useEffect(() => {
@@ -37,7 +39,7 @@ function App() {
   const updateToken = (newToken) => {
     localStorage.setItem("token", newToken);
     setSessionToken(newToken);
-    console.log(sessionToken);
+    console.log(newToken);
   };
 
   const protectedViews = () => {
@@ -60,66 +62,86 @@ function App() {
    
   };
 
-  return (
+  const handleSnackbarClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setShowSnackBar(false);
+    setSnackBarMsg('Processing');
+    setSnackBarSeverity('info');
+  }
 
+  return (
 
     <ThemeProvider theme={theme}>
 
       {protectedViews}
-      <BrowserRouter>
-      <Route path="/">
-      <Sitebar 
-      sessionToken={sessionToken}
-      clickLogout={clearToken}/>
-      </Route>
+      <DynamicSnackBar
+        open={showSnackBar} 
+        handleClose={handleSnackbarClose}
+        message={snackBarMsg}
+        severity={snackBarSeverity} />
 
-      
-  
-        
-          
+      <BrowserRouter>
+        <Route path="/">
+          <Sitebar 
+            sessionToken={sessionToken}
+            clickLogout={clearToken}
+            setSnackBarMsg={setSnackBarMsg}
+            setSnackBarSeverity={setSnackBarSeverity} 
+            setShowSnackBar={setShowSnackBar}
+          />
+        </Route>
          
         <Route exact path="/">
-        <Logo updateToken={updateToken}
-        setUsername={setUsername}
-        username={username}
-        password={password}
-        setPassword={setPassword}/>
+          <Logo updateToken={updateToken}
+            setUsername={setUsername}
+            username={username}
+            password={password}
+            setPassword={setPassword}/>
         </Route>
 
         <Route exact path="/login">
          <Login setUsername={setUsername} username={username}
-         password={password}
-         sessionToken={sessionToken}
-         setPassword={setPassword}
-         updateToken={updateToken}/>
-         </Route>
+            password={password}
+            sessionToken={sessionToken}
+            setPassword={setPassword}
+            updateToken={updateToken}/>
+        </Route>
         
-         <Route exact path="/signup">
-         <Signup setUsername={setUsername} username={username}
-         password={password}
-         sessionToken={sessionToken}
-         setPassword={setPassword}
-         updateToken={updateToken}/>
+        <Route exact path="/signup">
+          <Signup setUsername={setUsername} username={username}
+            password={password}
+            sessionToken={sessionToken}
+            setPassword={setPassword}
+            updateToken={updateToken}/>
+        </Route>
+
+        <Route exact path="/profile">
+          <ViewProfile 
+            setUsername={setUsername}
+            username={username}
+            password={password}
+            sessionToken={sessionToken}
+            setPassword={setPassword}
+            updateToken={updateToken}
+            setSnackBarMsg={setSnackBarMsg}
+            setSnackBarSeverity={setSnackBarSeverity} 
+            setShowSnackBar={setShowSnackBar}
+            userProfile={userProfile} setUserProfile={setUserProfile}
+          />
          </Route>
 
-         <Route exact path="/profile">
-         <ViewProfile setUsername={setUsername} username={username}
-         password={password}
-         sessionToken={sessionToken}
-         setPassword={setPassword}
-         updateToken={updateToken}/>
-         </Route>
-
-         <Route exact path="/upload">
-         <Upload setUsername={setUsername} username={username}
-         password={password}
-         sessionToken={sessionToken}
-         setPassword={setPassword}
-         updateToken={updateToken}/>
-         </Route>
+        <Route exact path="/upload">
+          <Upload setUsername={setUsername} username={username}
+              password={password}
+              sessionToken={sessionToken}
+              setPassword={setPassword}
+              updateToken={updateToken}/>
+        </Route>
 
 
-         <Route exact path="/date">
+        <Route exact path="/date">
          <DatePlan setUsername={setUsername} username={username}
          password={password}
          sessionToken={sessionToken}
@@ -137,17 +159,16 @@ function App() {
          </Route>
        
         <Route exact path="/user">
-        <VerifiedUserView  username={username} sessionToken={sessionToken}/>
+        <VerifiedUserView  username={username} sessionToken={sessionToken} userProfile={userProfile} setUserProfile={setUserProfile}/>
         </Route>
         
         <Route exact path="/user/match">
-        <MatchTable username={username}  sessionToken={sessionToken}/>
+        <MatchTable username={username}  sessionToken={sessionToken}  userProfile={userProfile}/>
         </Route>
 
         <Route exact path="/createprofile">
         <ProfileCreate username={username}  sessionToken={sessionToken}/>
         </Route>
-
       </BrowserRouter>
     </ThemeProvider>
   );

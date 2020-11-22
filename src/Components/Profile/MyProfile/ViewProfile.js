@@ -5,19 +5,10 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
-import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import EditIcon from '@material-ui/icons/Edit';
 import Fab from '@material-ui/core/Fab';
-import TextField from '@material-ui/core/TextField';
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import Grid from '@material-ui/core/Grid';
-import UpdateProfileModal from './UpdateProfile';
-
+import UpdateProfile from './UpdateProfile';
 
 const useStyles = makeStyles({
   root: {
@@ -29,50 +20,91 @@ const useStyles = makeStyles({
 });
 
 export default function ViewProfile(props) {
+  const {
+    setSnackBarSeverity,
+    setShowSnackBar,
+    setSnackBarMsg
+  } = props;
+
   const [open, setOpen] = React.useState(false);
+  // const [userProfile, setUserProfile]  = React.useState([]);
+  // const [showSnackBar, setShowSnackBar]= React.useState(false);
+  // const [snackBarMsg, setSnackBarMsg] = React.useState('Processing');
+  // const [snackBarSeverity, setSnackBarSeverity] = React.useState('info');
+  const [reload, setReload] = React.useState(false);
 
   const handleClickOpen = () => {
     setOpen(true);
   };
 
-  const handleClose = () => {
+  const handleClose = (reload=false) => {
     setOpen(false);
+    if(reload)
+      setReload(true);
   };
 
   const classes = useStyles();
 
+  React.useEffect(()=>{
+    const getProfile = () => {
+      fetch(`http://localhost:4000/profile/`, 
+      {
+        method: "GET",
+        headers: new Headers ({
+          'Content-Type': 'application/json',
+          'Authorization': localStorage.getItem("token")
+        })
+      } )
+      .then((result) => result.json())
+      .then((profile) => {
+        console.log(profile);
+        props.setUserProfile(profile[0]);
+      })
+      .catch((err) => console.log(err));
+    };
+    getProfile();
+    setReload(false);
+    //console.log(userProfile);
+  },[reload]);
+
   return (
-    <div className= "mainDiv topBorder">
+    <div className= "mainDivforProfile topBorder">
     <Card className={classes.root}>
       <CardActionArea>
-      <Fab color="secondary" aria-label="edit">
-        <EditIcon onClick={handleClickOpen} />
-      </Fab>
       <div className="imageContainer">
-      <div className="imageDiv">
-      <div className="imageInnerDiv">
-      //img goes here<CardMedia
-          className={classes.media}
-          image="../../../src/asset/datePerfect.png"
-          title="user-image" />
-      </div>
+        <div className="imageDiv">
+          <Fab color="secondary" aria-label="edit" className="editIcon" size="small">
+            <EditIcon onClick={handleClickOpen} />
+          </Fab>
+          <div className="imageInnerDiv">
+            {/* //img goes here */}
+               
+            <CardMedia />
+                <img src={props.userProfile.picURL} style={{ height: "200px" }} />
+                {console.log(props.userProfile.picURL)}
+                
+                  
+          </div>
         </div>
       </div>
         
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
-            Charlie E
+           {props.userProfile?.firstName + '  ' + props.userProfile?.lastName}
           </Typography>
-          <Typography>
-          <p>Indianapolis, Indiana</p>
+          <Typography variant="h5" component="h4">
+          <p>{props.userProfile?.location}</p>
           </Typography>
           <Typography variant="body2" color="textPrimary" component="p">
-            Write about yourself. Write about yourself. Talk about yourself. Talk about yourself
+           {props.userProfile?.bio}
             </Typography>
 
-            <Typography variant="body2" color="textSeconday" component="h2">
+            <Typography variant="body2" color="textSeconday" component="h3">
             <h5> HOBBIES </h5>
-            <p><span>hob1 | </span><span>hob3 | </span><span>hob2 | </span></p>
+            
+          </Typography>
+          <Typography variant="body2" color="textSeconday" component="h2">
+            {props.userProfile?.hobbies}
           </Typography>
         </CardContent>
       </CardActionArea>
@@ -81,92 +113,14 @@ export default function ViewProfile(props) {
       </CardActions>
     </Card>
 
-
-    <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-        <DialogTitle id="form-dialog-title">Profile Edit</DialogTitle>
-        <DialogContent>
-          <DialogContentText>
-            Edit your profile
-          </DialogContentText>
-          <TextField
-            autoFocus
-            margin="dense"
-            id="name"
-            label="Name"
-            type="name"
-            fullWidth
-          />
-          <Grid container spacing={3}>
-        <Grid item xs={12} sm={6}>
-          <TextField
-            id="currentcity"
-            name="currentcity"
-            label="Current City"
-            fullWidth
-            autoComplete="given-name"
-          />
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <TextField
-            id="currentstate"
-            name="currentstate"
-            label="Current State"
-            fullWidth
-            autoComplete="family-name"
-          />
-        </Grid>
-        </Grid>
-          <TextField
-          id="filled-multiline-static"
-          label="About section"
-          multiline
-          rows={4}
-          variant="filled"
-          fullWidth
+      <UpdateProfile 
+        open={open} handleClose={handleClose} 
+        profileToUpdate={props.userProfile}
+        setSnackBarMsg={setSnackBarMsg}
+        setSnackBarSeverity={setSnackBarSeverity} 
+        setShowSnackBar={setShowSnackBar}
+        setReload={setReload}
         />
-          <DialogTitle className="hobbiesTitle" id="form-dialog-title" margin="dense">Hobbies</DialogTitle>
-          
-          <Grid container spacing={3}>
-        <Grid item xs={12} sm={4}>
-          <TextField
-            id="hobby1"
-            name="hobby1"
-            label="Hobby 1"
-            fullWidth
-            autoComplete="given-name"
-          />
-        </Grid>
-        <Grid item xs={12} sm={4}>
-          <TextField 
-            id="hobby2"
-            name="hobby2"
-            label="Hobby 2"
-            fullWidth
-            autoComplete="family-name"
-          />
-        </Grid>
-        <Grid item xs={12} sm={4}>
-          <TextField
-            id="hobby3"
-            name="hobby3"
-            label="Hobby 3"
-            fullWidth
-            autoComplete="family-name"
-          />
-        </Grid>
-        </Grid>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose} color="primary">
-            Cancel
-          </Button>
-          <Button onClick={handleClose} color="primary">
-            Update
-          </Button>
-        </DialogActions>
-      </Dialog>
-      <UpdateProfileModal sessionToken={props.sessionToken} open={open} handleClose={handleClose}/>
-    
     </div>
   );
 }

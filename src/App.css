@@ -11,6 +11,20 @@
   left:50%;
   transform: translateX(-50%);
 }
+
+.mainDivforProfile{
+  margin-left: auto;
+  margin-right:auto;
+  display:flex;
+  justify-content: flex-end;
+  flex-direction: column;
+  position: absolute;
+  top:15%;
+  left:50%;
+  transform: translateX(-50%);
+}
+
+
 .buttonDiv{
   display: flex;
   flex-direction: column;
@@ -67,27 +81,35 @@
   margin-bottom: auto;
   margin-left: 10px;
   margin-right: 10px;
-  padding: 40px 80px;
+  padding: 20px 60px;
   background-color: black;
+  position: relative;
 }
 
-/* .topborder {
-  box-shadow: 2px 2px 2px black;
-  border: 15px solid blue;
-} */
+.topborder {
+  /* box-shadow: 2px 2px 2px black;
+  border: 15px solid blue; */
+  /* display: block;
+  width: 60vw; */
+}
 
 .imageInnerDiv {
   display: flex;
   width: auto;
   margin: auto;
   padding: 10px 10px;
-  background-color: rgb(229, 233, 229);
+  background-color: rgb(10, 10, 10);
   position: relative;
-  top: 50px;
-  
-
+  /* top: 20px; */
+  border-radius: 50%;
 }
 
+.editIcon{
+  position: absolute !important;
+  top: 10px;
+  right: 10px;
+  z-index: 10;
+}
 
 
 
@@ -195,10 +217,11 @@
 
 .heartModal{
   display:flex;
-  justify-content: center;
   align-items: center;
   margin-left: 10px;
   margin-right:10px;
+  margin-bottom: 25%;
+  font-size: 200%;
 }
 
 .modalTitle{
@@ -211,7 +234,6 @@
   background-color:#100B00;
   display: flex;
   
-
 }
 
 #connect{
@@ -220,6 +242,13 @@
   margin-left:auto;
   letter-spacing: 5px;
   font-size: 1.25rem;
+
+}
+
+.connect1{
+  margin-right: auto;
+  margin-left:auto;
+  text-decoration: none;
 }
 
 .fa-envelope{
@@ -235,8 +264,24 @@
 
 #matchBar{
   background-color: #220A4A;
+  /* display:flex; */
+  /* align-items: flex-start; */
 }
 
 .chip:hover{
   cursor: pointer;
+}
+
+.title_pic{
+  display:flex;
+  flex-direction: column;
+}
+
+.name{
+  transform: translateX(20%);
+}
+
+
+.profileButton{
+  margin-right: 15px !important;
 }

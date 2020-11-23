@@ -22,7 +22,7 @@ function DatePlanMeal(props) {
           <img src={Chuys}></img>
           </Typography>
           <Typography className= "cardText" gutterBottom>
-          <p>This is the  Meal Page</p>
+          <p>Our restaurant recommendation for you is Chuys.</p>
            
           </Typography>
           </div>)

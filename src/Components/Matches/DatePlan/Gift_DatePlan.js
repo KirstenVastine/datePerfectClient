@@ -14,7 +14,7 @@ function DatePlanGift(props) {
            
           </Typography>
           <Typography className= "cardText" gutterBottom>
-          <p>This is the  Gift Page</p>
+          <p>Our gift recommendation for you is flowers.</p>
            
           </Typography>
           </div>)

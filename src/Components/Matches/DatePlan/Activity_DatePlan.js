@@ -12,7 +12,7 @@ function DatePlanActivity(props) {
            
           </Typography>
           <Typography className= "cardText" gutterBottom>
-          <p>Activity Recommendation: Axe-Throwing</p>
+          <p>Activity: Axe-Throwing</p>
            
           </Typography>
           </div>)

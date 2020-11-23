@@ -33,7 +33,7 @@ function VerifiedUserView(props) {
       <div className="titleDiv">
         <i class="far fa-heart heart"></i>
         <br></br>
-        <h1 className="title">{`Hello ${props.userProfile.firstName}!`}</h1>
+        <h1 className="title">{`Hello ${props.userProfile?.firstName}!`}</h1>
       </div>
       <div className="buttonDiv">
         <Chip

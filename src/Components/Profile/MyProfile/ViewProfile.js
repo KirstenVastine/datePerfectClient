@@ -28,11 +28,12 @@ export default function ViewProfile(props) {
 
   const [openUpdateProfile, setOpenUpdateProfile] = React.useState(false);
   const [reload, setReload] = React.useState(false);
-
+  
+  //opens update profile modal
   const handleClickOpen = () => {
     setOpenUpdateProfile(true);
   };
-
+  //close updateProfile modal
   const handleCloseForUpdateProfile = (reload=false) => {
     setOpenUpdateProfile(false);
     if(reload)

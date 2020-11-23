@@ -56,6 +56,7 @@ export default function UpdateProfile(props) {
     //separating the hobbies string from the database into an array to display in hobby1, hobby2, hobby3
     const hobbyList = profileToUpdate?.hobbies?.split(',');
     if(hobbyList){
+      //using null coalescing operator(??)
       setHobby1(hobbyList[0] ?? '');
       setHobby2(hobbyList[1] ?? '');
       setHobby3(hobbyList[2] ?? '');

@@ -85,6 +85,7 @@ function App() {
       <BrowserRouter>
         <Route path="/">
           <Sitebar 
+            userProfile={userProfile}
             sessionToken={sessionToken}
             clickLogout={clearToken}
             setSnackBarMsg={setSnackBarMsg}
@@ -106,7 +107,9 @@ function App() {
             password={password}
             sessionToken={sessionToken}
             setPassword={setPassword}
-            updateToken={updateToken}/>
+            updateToken={updateToken}
+            userProfile={userProfile}
+            />
         </Route>
         
         <Route exact path="/signup">

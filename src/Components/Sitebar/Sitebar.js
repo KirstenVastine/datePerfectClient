@@ -73,7 +73,7 @@ const handleClickOpen = () => {
         <AppBar position="fixed" color="primary">
           <Toolbar>
             <Typography variant="h5">
-              <Link to={!props.sessionToken ? "/" : "/user"} id="navTitle">
+              <Link to={!props.sessionToken || props.userProfile === undefined  ? "/" : "/user"} id="navTitle">
                 
                 Date Perfect <i class="far fa-heart smallHeart"></i>
               </Link>

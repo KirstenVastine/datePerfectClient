@@ -72,12 +72,16 @@ function Login (props){
       const classes = useStyles();
 
 
+      // const checkForToken= () =>{
+      //   if(props.sessionToken){
+      //     return ( <Redirect to= "/user"/>)
+      //   }return(console.log('no luck'))
+      // }
       const checkForToken= () =>{
-        if(props.sessionToken){
-          return ( <Redirect to= "/user"/>)
-        }return(console.log('no luck'))
+        if(!props.sessionToken || props.userProfile === undefined ){
+          return ( <Redirect to= "/login"/>)
+        }return(<Redirect to= "/user"/>)
       }
-
 
     return(
         
@@ -142,6 +146,7 @@ function Login (props){
       <Box mt={8}></Box>
       {console.log(props.username)}
       {console.log(props.password)}
+      {console.log(props.userProfile)}
     </Container>
     <div>
   

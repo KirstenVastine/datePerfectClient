@@ -143,7 +143,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const steps = ['Lets make a start', 'Food Preferences', 'Activities'];
+const steps = ["Let's make a start", 'Food Preferences', 'Activities'];
 
 // function getStepContent(step) {
 //   switch (step) {
@@ -224,6 +224,7 @@ function getStepContent(step) {
       <InterestPref firstName={firstName} 
         setFirstName={setFirstName} 
         lastName={lastName} 
+        sessionToken={props.sessionToken}
         setLastName={setLastName} 
         email={email} setEmail={setEmail} 
         location={location} 
@@ -231,7 +232,7 @@ function getStepContent(step) {
         interestPref={dateType}
         setInterestPref={setDateType} />);
     case 1:
-      return <Cuisine cuisine={cuisine} setCuisine={setCuisine}/>;
+      return <Cuisine cuisine={cuisine} sessionToken={props.sessionToken} setCuisine={setCuisine}/>;
     case 2:
       return (
       <Hobbies picURL={picURL} 
